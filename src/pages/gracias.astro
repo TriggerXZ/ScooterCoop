@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Gracias por tu mensaje" description="Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-dark-blue text-white py-16">
+    <div class="container mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">¡Gracias por tu mensaje!</h1>
+      <p class="text-xl mb-8">Hemos recibido tu solicitud de reserva</p>
+    </div>
+  </section>
+
+  <!-- Thank You Section -->
+  <section class="py-16">
+    <div class="container mx-auto max-w-2xl text-center">
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <div class="text-primary text-6xl mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">Tu mensaje ha sido enviado con éxito</h2>
+        <p class="text-gray-600 mb-6">Nos pondremos en contacto contigo lo antes posible para confirmar tu reserva de scooter eléctrico.</p>
+        <p class="text-gray-600 mb-8">Si tienes alguna pregunta adicional, no dudes en contactarnos directamente por teléfono.</p>
+        <a href="/" class="bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-secondary transition-colors inline-block">Volver al inicio</a>
+      </div>
+    </div>
+  </section>
+</Layout>

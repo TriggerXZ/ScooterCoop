@@ -1,0 +1,180 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Alquiler de scooters eléctricos en el Malecón de Barranquilla' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title} | ScooterCoop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Iconos de Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body class="bg-gray-100">
+    <!-- AOS Script -->
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true
+        });
+      });
+    </script>
+    
+    <!-- Navbar con efecto de cristal (glassmorphism) -->
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/70 shadow-soft">
+      <div class="container mx-auto py-4 px-4 md:px-6">
+        <nav class="flex justify-between items-center">
+          <a href="/" class="text-2xl font-display font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">ScooterCoop</a>
+          
+          <!-- Menú para móvil -->
+          <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-black p-2 focus:outline-none">
+              <i class='bx bx-menu text-2xl'></i>
+            </button>
+          </div>
+          
+          <!-- Menú para escritorio -->
+          <ul class="hidden md:flex space-x-8 items-center">
+            <li><a href="/servicios" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Servicios</a></li>
+            <li><a href="/precios" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Precios</a></li>
+            <li><a href="/galeria" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Galería</a></li>
+            <li><a href="/ubicacion" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Ubicación</a></li>
+            <li><a href="/contacto" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2.5 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Menú móvil desplegable -->
+      <div id="mobile-menu" class="hidden bg-white shadow-lg rounded-b-2xl mx-4 overflow-hidden transition-all duration-300 ease-in-out">
+        <ul class="py-2 px-4 space-y-3">
+          <li><a href="/servicios" class="block py-2 hover:text-primary transition-colors">Servicios</a></li>
+          <li><a href="/precios" class="block py-2 hover:text-primary transition-colors">Precios</a></li>
+          <li><a href="/galeria" class="block py-2 hover:text-primary transition-colors">Galería</a></li>
+          <li><a href="/ubicacion" class="block py-2 hover:text-primary transition-colors">Ubicación</a></li>
+          <li><a href="/contacto" class="block py-2 mt-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center">Contacto</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <slot />
+    </main>
+
+    <footer class="bg-gradient-to-r from-dark-blue to-primary text-white mt-12 py-16 relative overflow-hidden">
+      <!-- Formas decorativas en el footer -->
+      <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-white"></div>
+        <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-white"></div>
+      </div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-1">
+            <h3 class="text-2xl font-display font-bold mb-6 text-white bg-gradient-to-r from-white to-light-blue text-transparent bg-clip-text">ScooterCoop</h3>
+            <p class="mb-6">Tu mejor opción para recorrer el Malecón de Barranquilla con estilo y comodidad.</p>
+            <div class="flex space-x-4">
+              <a href="https://www.instagram.com/scootercoop_/" target="_blank" class="text-white hover:text-accent transition-colors" aria-label="Instagram">
+                <i class='bx bxl-instagram text-2xl'></i>
+              </a>
+              <a href="#" class="text-white hover:text-accent transition-colors" aria-label="Facebook">
+                <i class='bx bxl-facebook text-2xl'></i>
+              </a>
+              <a href="#" class="text-white hover:text-accent transition-colors" aria-label="Twitter">
+                <i class='bx bxl-twitter text-2xl'></i>
+              </a>
+              <a href="#" class="text-white hover:text-accent transition-colors" aria-label="WhatsApp">
+                <i class='bx bxl-whatsapp text-2xl'></i>
+              </a>
+            </div>
+          </div>
+          
+          <div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-6 text-white">Contacto</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class='bx bx-map text-xl mr-2 mt-1'></i>
+                <span>Malecón del Río, Barranquilla, Colombia</span>
+              </li>
+              <li class="flex items-center">
+                <i class='bx bx-phone text-xl mr-2'></i>
+                <span>+57 300 123 4567</span>
+              </li>
+              <li class="flex items-center">
+                <i class='bx bx-envelope text-xl mr-2'></i>
+                <span>info@scootercop.com</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-6 text-white">Horario</h3>
+            <ul class="space-y-3">
+              <li class="flex items-center">
+                <i class='bx bx-time text-xl mr-2'></i>
+                <div>
+                  <p class="font-medium">Lunes a Viernes</p>
+                  <p>3:00 PM - 10:00 PM</p>
+                </div>
+              </li>
+              <li class="flex items-center">
+                <i class='bx bx-time text-xl mr-2'></i>
+                <div>
+                  <p class="font-medium">Sábados y Domingos</p>
+                  <p>2:00 PM - 11:00 PM</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-white/20 text-center">
+          <p>&copy; {new Date().getFullYear()} ScooterCop. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Script para el menú móvil -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+          
+          // Cambiar el icono del botón
+          const icon = mobileMenuButton.querySelector('i');
+          if (mobileMenu.classList.contains('hidden')) {
+            icon.classList.remove('bx-x');
+            icon.classList.add('bx-menu');
+          } else {
+            icon.classList.remove('bx-menu');
+            icon.classList.add('bx-x');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

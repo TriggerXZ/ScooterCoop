@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Servicios" description="Conoce nuestros servicios de alquiler de scooters eléctricos en el Malecón de Barranquilla">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary to-dark-blue text-white py-16">
+    <div class="container mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Nuestros Servicios</h1>
+      <p class="text-xl mb-8">Descubre todas las opciones que tenemos para ti</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Service 1 -->
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="bg-primary text-white p-4 rounded-full h-16 w-16 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-3">Alquiler por Tiempo</h3>
+            <p class="text-gray-600 mb-4">Elige entre nuestros paquetes de 30, 40 o 60 minutos según tus necesidades. Ideal para recorrer el Malecón a tu ritmo.</p>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                30 minutos: $25.000 COP
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                40 minutos: $30.000 COP
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                60 minutos: $35.000 COP
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="bg-secondary text-white p-4 rounded-full h-16 w-16 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-3">Tours Grupales</h3>
+            <p class="text-gray-600 mb-4">Disfruta de nuestros recorridos en grupo con guía turístico. Perfecto para familias, amigos o empresas.</p>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Grupos de 5-10 personas
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Duración: 1 hora y 30 minutos
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Precio por persona: $40.000 COP
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="bg-dark-blue text-white p-4 rounded-full h-16 w-16 flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-3">Eventos Especiales</h3>
+            <p class="text-gray-600 mb-4">Organizamos eventos especiales para cumpleaños, despedidas de soltero/a, eventos corporativos y más.</p>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Paquetes personalizados
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Incluye fotografías del evento
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Consulta precios según necesidades
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-light-blue">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Preguntas Frecuentes</h2>
+      <div class="max-w-3xl mx-auto space-y-6">
+        <!-- FAQ Item 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3">¿Necesito experiencia previa para alquilar un scooter?</h3>
+          <p class="text-gray-600">No, no es necesario tener experiencia previa. Nuestros scooters son fáciles de manejar y te daremos una breve instrucción antes de comenzar tu recorrido.</p>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3">¿Qué documentos necesito para alquilar?</h3>
+          <p class="text-gray-600">Solo necesitas presentar tu documento de identidad (cédula, pasaporte o documento extranjero) y firmar nuestro formulario de responsabilidad.</p>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3">¿Hay límite de edad para alquilar?</h3>
+          <p class="text-gray-600">Sí, debes ser mayor de 12 años para alquilar un scooter. Los menores de edad pueden utilizarlos bajo la supervisión y responsabilidad de un adulto.</p>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3">¿Puedo reservar con anticipación?</h3>
+          <p class="text-gray-600">Sí, te recomendamos reservar con anticipación, especialmente en fines de semana y temporada alta. Puedes hacerlo a través de nuestro formulario de contacto o llamándonos directamente.</p>
+        </div>
+        
+        <!-- FAQ Item 5 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-3">¿Qué métodos de pago aceptan?</h3>
+          <p class="text-gray-600">Aceptamos efectivo, tarjetas de crédito/débito (Visa, MasterCard, American Express) y transferencias bancarias para reservas anticipadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-primary to-dark-blue text-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6 text-white">¿Listo para vivir la experiencia?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Reserva ahora y disfruta de un recorrido inolvidable por el Malecón de Barranquilla</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contacto" class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-light-blue transition-colors inline-block">Reservar Ahora</a>
+        <a href="/galeria" class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-primary transition-colors inline-block">Ver Galería</a>
+      </div>
+    </div>
+  </section>
+</Layout>

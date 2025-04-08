@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-gradient: linear-gradient(to right, #0062D3, #00A3FF);
+  --accent-gradient: linear-gradient(to right, #00A3FF, #00E0FF);
+  --card-blur: blur(16px);
+  --neomorphism-shadow: 8px 8px 16px #e0e0e0, -8px -8px 16px #ffffff;
+}
+
+/* Estilos personalizados globales */
+body {
+  @apply font-sans text-gray-800 bg-gray-100 min-h-screen flex flex-col;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display font-bold;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl lg:text-6xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl;
+}
+
+/* Estilos para componentes comunes */
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 hover:scale-105;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-medium hover:bg-primary hover:text-white transition-all duration-300;
+  }
+  
+  .card-glass {
+    @apply bg-white/70 backdrop-blur-lg rounded-2xl shadow-glass border border-white/20;
+  }
+  
+  .card-neomorphism {
+    @apply bg-white rounded-2xl shadow-soft hover:shadow-lg transition-all duration-300;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text;
+  }
+}
+
+/* Animaciones personalizadas */
+.hover-float {
+  transition: transform 0.3s ease;
+}
+
+.hover-float:hover {
+  transform: translateY(-8px);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0062D3;
+}
