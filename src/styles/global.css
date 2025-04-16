@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --primary-gradient: linear-gradient(to right, #0062D3, #00A3FF);
-  --accent-gradient: linear-gradient(to right, #00A3FF, #00E0FF);
+  --primary-gradient: linear-gradient(to right, #004AAD, #0075D1);
+  --accent-gradient: linear-gradient(to right, #0075D1, #00B8E0);
   --card-blur: blur(16px);
   --neomorphism-shadow: 8px 8px 16px #e0e0e0, -8px -8px 16px #ffffff;
 }
@@ -82,5 +82,5 @@ h3 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0062D3;
+  background: #004AAD;
 }

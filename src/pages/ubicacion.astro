@@ -15,12 +15,9 @@ import Layout from '../layouts/Layout.astro';
   <section class="py-16">
     <div class="container mx-auto">
       <div class="bg-white p-6 rounded-lg shadow-lg mb-12">
-        <!-- Aquí iría un mapa real con la API de Google Maps o similar -->
-        <div class="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
-          <p class="text-gray-600 text-center">
-            <span class="block text-xl font-bold mb-2">Mapa de Ubicación</span>
-            <span class="block">Aquí se mostraría un mapa interactivo con nuestra ubicación exacta en el Malecón del Río, Barranquilla.</span>
-          </p>
+        <!-- Mapa estático de ubicación -->
+        <div class="bg-gray-200 h-96 rounded-lg overflow-hidden">
+          <img src="/mapa.jpg" alt="Mapa de ubicación en el Malecón del Río, Barranquilla" class="w-full h-full object-cover object-center">
         </div>
       </div>
 
@@ -75,8 +72,8 @@ import Layout from '../layouts/Layout.astro';
             <div class="bg-light-blue p-6 rounded-lg">
               <h3 class="font-bold text-lg mb-3">En Transporte Público</h3>
               <ul class="list-disc pl-5 space-y-2 text-gray-600">
-                <li>Toma la ruta de Transmetro hasta la estación más cercana al Malecón</li>
-                <li>Desde allí, camina aproximadamente 10 minutos hasta nuestro punto de encuentro</li>
+                <li>Toma la ruta de Transmetro hasta la estación más cercana al Malecón. La ruta A8-1 Paraíso</li>
+                <li>Desde allí, camina aproximadamente 5 minutos hasta nuestro punto de encuentro</li>
                 <li>También puedes tomar un taxi o servicio de transporte compartido directamente hasta el Malecón</li>
               </ul>
             </div>
