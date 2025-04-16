@@ -1,0 +1,75 @@
+---
+// Componente para implementar Schema.org (datos estructurados) para SEO
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ScooterCoop",
+  "description": "Alquiler de scooters eléctricos y patinetas eléctricas en el Malecón de Barranquilla",
+  "url": "https://scootercoop.netlify.app",
+  "logo": "https://scootercoop.netlify.app/logo.png",
+  "image": "https://scootercoop.netlify.app/logo.png",
+  "telephone": "+573001234567",
+  "email": "info@scootercoop.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barranquilla",
+    "addressRegion": "Atlántico",
+    "addressCountry": "CO",
+    "streetAddress": "Malecón del Río Magdalena"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "11.0041",
+    "longitude": "-74.8070"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$",
+  "sameAs": [
+    "https://www.instagram.com/scootercoop_/",
+    "https://www.facebook.com/scootercoop"
+  ],
+  "keywords": "scooter, scootercoop, patinetas eléctricas, alquiler de scooters, scooters eléctricos, Barranquilla, Malecón"
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Alquiler de Scooters Eléctricos",
+  "description": "Servicio de alquiler de patinetas eléctricas para recorrer el Malecón de Barranquilla",
+  "brand": {
+    "@type": "Brand",
+    "name": "ScooterCoop"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "COP",
+    "lowPrice": "25000",
+    "highPrice": "35000",
+    "offerCount": "3",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "125"
+  }
+};
+
+const { type = "website" } = Astro.props;
+---
+
+{type === "website" && (
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+)}
+
+{type === "product" && (
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+)}

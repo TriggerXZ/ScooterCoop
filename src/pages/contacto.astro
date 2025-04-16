@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contacto" description="Contáctanos para reservar tu scooter eléctrico o solicitar más información">
   <script src="../scripts/contact-form.js"></script>
+  <script src="../scripts/image-viewer.js"></script>
   <!-- Hero Section -->
   <section class="bg-gradient-to-r from-primary to-dark-blue text-white py-16">
     <div class="container mx-auto text-center">
@@ -162,8 +163,8 @@ import Layout from '../layouts/Layout.astro';
     <div class="container mx-auto">
       <h2 class="text-3xl font-bold text-center mb-12">Nuestra Ubicación</h2>
       <div class="bg-white p-4 rounded-lg shadow-lg">
-        <!-- Aquí iría un mapa real con la API de Google Maps o similar -->
-        <div class="bg-gray-200 h-96 rounded-lg overflow-hidden">
+        <!-- Mapa interactivo -->
+        <div class="bg-gray-200 h-96 rounded-lg overflow-hidden map-container">
           <img src="/mapa.jpg" alt="Mapa de ubicación en el Malecón del Río, Barranquilla" class="w-full h-full object-cover">
         </div>
       </div>
