@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             email: formData.get('email'),
             telefono: formData.get('telefono'),
             servicio: formData.get('servicio'),
+            cantidad: formData.get('cantidad'),
             mensaje: formData.get('mensaje')
           })
         })
