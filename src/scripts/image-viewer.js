@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Seleccionar todas las imágenes de mapas en las páginas de ubicación y contacto
   const mapImages = document.querySelectorAll('.map-container img');
   
+  // Añadir clase para mejorar la interacción en móviles
+  document.querySelectorAll('.map-container').forEach(container => {
+    container.classList.add('interactive-map');
+  });
+  
   mapImages.forEach(img => {
     // Crear el contenedor para el visor interactivo
     const container = img.parentElement;
@@ -21,8 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
       // Establecer el tamaño inicial para asegurar que toda la imagen sea accesible
       img.style.width = '100%';
       img.style.height = 'auto';
+      img.style.maxWidth = 'none'; // Permitir que la imagen crezca más allá del contenedor cuando hay zoom
       updateImageTransform();
     };
+    
+    // Aplicar estilos inmediatamente en caso de que la imagen ya esté cargada
+    if (img.complete) {
+      img.style.width = '100%';
+      img.style.height = 'auto';
+      img.style.maxWidth = 'none';
+      updateImageTransform();
+    }
     
     // Función para actualizar la transformación de la imagen
     function updateImageTransform() {
@@ -35,14 +49,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Eventos táctiles para dispositivos móviles
     container.addEventListener('touchstart', function(e) {
-      e.preventDefault();
+      // No prevenir el comportamiento predeterminado para permitir el desplazamiento nativo
       panning = true;
       start.x = e.touches[0].clientX - pointX;
       start.y = e.touches[0].clientY - pointY;
     });
     
     container.addEventListener('touchmove', function(e) {
-      e.preventDefault();
+      // No prevenir el comportamiento predeterminado para permitir el desplazamiento nativo
       if (!panning) return;
       
       // Calcular la nueva posición
@@ -58,12 +72,17 @@ document.addEventListener('DOMContentLoaded', function() {
       const maxX = Math.max(scaledWidth - container.clientWidth, 0);
       const maxY = Math.max(scaledHeight - container.clientHeight, 0);
       
-      // Permitimos desplazamiento completo en ambas direcciones
-      pointX = Math.min(Math.max(pointX, -maxX), 0);
-      pointY = Math.min(Math.max(pointY, -maxY), 0);
+      // Permitimos desplazamiento completo en ambas direcciones sin restricciones
+      // para dispositivos móviles
+      if (scale > 1) {
+        // Solo aplicamos límites cuando hay zoom
+        pointX = Math.min(Math.max(pointX, -maxX), 0);
+        pointY = Math.min(Math.max(pointY, -maxY), 0);
+      }
       
       updateImageTransform();
     });
+    
     
     container.addEventListener('touchend', function(e) {
       panning = false;
@@ -76,6 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const tapLength = currentTime - lastTap;
       
       if (tapLength < 300 && tapLength > 0) {
+        e.preventDefault(); // Prevenir comportamiento predeterminado solo para doble toque
+        
         // Doble toque detectado - alternar entre zoom y vista normal
         if (scale === 1) {
           scale = 2; // Zoom in
@@ -181,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Añadir instrucciones para dispositivos móviles
     const instructions = document.createElement('div');
     instructions.className = 'map-instructions';
-    instructions.innerHTML = '<p>Toca dos veces para zoom • Arrastra para mover</p>';
+    instructions.innerHTML = '<p>Toca dos veces para zoom • Desliza para mover</p>';
     instructions.style.position = 'absolute';
     instructions.style.bottom = '10px';
     instructions.style.left = '0';
