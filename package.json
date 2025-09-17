@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "node ./scripts/update-theme.js && astro dev",
+    "build": "node ./scripts/update-theme.js && astro build",
+    "preview": "node ./scripts/update-theme.js && astro preview",
     "astro": "astro"
   },
   "dependencies": {
