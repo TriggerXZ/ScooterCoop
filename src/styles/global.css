@@ -59,6 +59,7 @@ h3 {
 }
 
 /* Animaciones personalizadas */
+/*
 .hover-float {
   transition: transform 0.3s ease;
 }
@@ -66,8 +67,10 @@ h3 {
 .hover-float:hover {
   transform: translateY(-8px);
 }
+*/
 
 /* Scrollbar personalizado */
+/*
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -80,7 +83,4 @@ h3 {
   background: var(--primary-gradient);
   border-radius: 10px;
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: #004AAD;
-}
+*/

@@ -48,7 +48,22 @@ const canonicalURL = new URL(
     <meta property="og:image" content="/logo.png" />
 
     <!-- Twitter -->
-    <!-- Boxicons -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} | ScooterCoop`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/logo.png" />
+
+    <title>{title} | ScooterCoop - Patinetas Eléctricas en Barranquilla</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Iconos de Boxicons -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -330,12 +345,8 @@ const canonicalURL = new URL(
                   <i class="bx bx-time text-secondary"></i>
                 </div>
                 <div>
-                  <p
-                    class="font-medium text-white group-hover:text-secondary transition-colors"
-                  >
-                    Lunes a Viernes
-                  </p>
-                  <p class="text-gray-400 text-sm">3:00 PM - 10:00 PM</p>
+                  <p class="font-medium">Lunes a Viernes</p>
+                  <p>3:00 PM - 10:00 PM</p>
                 </div>
               </li>
               <li class="flex items-start group">
@@ -345,12 +356,8 @@ const canonicalURL = new URL(
                   <i class="bx bx-calendar-star text-secondary"></i>
                 </div>
                 <div>
-                  <p
-                    class="font-medium text-white group-hover:text-secondary transition-colors"
-                  >
-                    Sábados y Domingos
-                  </p>
-                  <p class="text-gray-400 text-sm">2:00 PM - 11:00 PM</p>
+                  <p class="font-medium">Sábados y Domingos</p>
+                  <p>2:00 PM - 11:00 PM</p>
                 </div>
               </li>
             </ul>
