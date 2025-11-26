@@ -1,274 +1,338 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Animation from "../components/Animation.astro";
 ---
 
-<Layout title="Precios" description="Conoce nuestras tarifas de alquiler de scooters eléctricos en el Malecón de Barranquilla">
+<Layout
+  title="Precios"
+  description="Conoce nuestras tarifas de alquiler de scooters eléctricos en el Malecón de Barranquilla"
+>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-primary to-dark-blue text-white py-16">
-    <div class="container mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Nuestros Precios</h1>
-      <p class="text-xl mb-8">Tarifas accesibles para disfrutar del Malecón de Barranquilla</p>
+  <section class="relative overflow-hidden py-24 bg-dark">
+    <!-- Fondo Dinámico -->
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary/10 via-dark to-dark opacity-40"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 bg-[length:40px_40px]"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <Animation animation="fade-down">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+          Nuestros <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent"
+            >Precios</span
+          >
+        </h1>
+      </Animation>
+      <Animation animation="fade-up" delay={200}>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Tarifas transparentes y accesibles. Elige el plan que mejor se adapte
+          a tu aventura.
+        </p>
+      </Animation>
     </div>
   </section>
 
   <!-- Pricing Cards Section -->
-  <section class="py-16">
-    <div class="container mx-auto">
+  <section class="py-16 bg-dark relative">
+    <div class="container mx-auto px-4 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- 30 min Plan -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
-          <div class="bg-primary py-6 text-center">
-            <h3 class="text-2xl font-bold text-white">Plan Básico</h3>
-            <p class="text-light-blue">30 minutos</p>
+        <Animation animation="fade-up" delay={100}>
+          <div
+            class="relative p-1 rounded-[2rem] bg-gradient-to-b from-white/10 to-transparent hover:from-primary/50 transition-all duration-500 group h-full"
+          >
+            <div class="absolute inset-0 bg-dark rounded-[2rem] m-[1px]"></div>
+            <div
+              class="relative h-full p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl flex flex-col"
+            >
+              <div class="mb-6">
+                <h3 class="text-2xl font-bold text-white mb-2">Plan Básico</h3>
+                <p class="text-primary font-medium">30 minutos</p>
+              </div>
+              <div class="flex items-end mb-8">
+                <span class="text-5xl font-bold text-white">$25.000</span>
+                <span class="text-gray-400 ml-2 mb-2">COP</span>
+              </div>
+
+              <ul class="space-y-4 mb-8 text-gray-300 flex-1">
+                <li class="flex items-center">
+                  <i class="bx bx-check text-primary mr-3 text-xl"></i>Casco
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-primary mr-3 text-xl"></i>Asesoría
+                  para manejar
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-primary mr-3 text-xl"></i>Guía de
+                  puntos turísticos
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-primary mr-3 text-xl"
+                  ></i>Acompañamiento
+                </li>
+              </ul>
+
+              <a
+                href="/contacto"
+                class="block w-full py-4 rounded-xl bg-white/10 hover:bg-primary hover:text-dark text-white text-center font-bold transition-all duration-300"
+              >
+                Reservar Ahora
+              </a>
+            </div>
           </div>
-          <div class="p-8 text-center">
-            <div class="text-4xl font-bold text-primary mb-4">$25.000 <span class="text-sm text-gray-500">COP</span></div>
-            <ul class="text-left space-y-4 mb-8">
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Recorrido de 30 minutos
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Scooter eléctrico
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Casco de seguridad
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Instrucciones básicas
-              </li>
-            </ul>
-            <a href="/contacto" class="bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-secondary transition-colors inline-block">Reservar Ahora</a>
-          </div>
-        </div>
+        </Animation>
 
         <!-- 40 min Plan -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform scale-105 z-10 border-2 border-primary">
-          <div class="bg-secondary py-6 text-center relative">
-            <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 transform translate-x-2 -translate-y-0 rotate-45 origin-bottom-left">
-              POPULAR
+        <Animation animation="fade-up" delay={200}>
+          <div
+            class="relative p-1 rounded-[2rem] bg-gradient-to-b from-secondary to-accent transform md:-translate-y-4 shadow-[0_0_30px_rgba(112,0,255,0.3)] group h-full"
+          >
+            <div
+              class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-secondary to-accent rounded-full text-white text-xs font-bold tracking-wider shadow-lg z-20"
+            >
+              MÁS POPULAR
             </div>
-            <h3 class="text-2xl font-bold text-white">Plan Estándar</h3>
-            <p class="text-light-blue">40 minutos</p>
+            <div class="absolute inset-0 bg-dark rounded-[2rem] m-[1px]"></div>
+            <div
+              class="relative h-full p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl flex flex-col"
+            >
+              <div class="mb-6">
+                <h3 class="text-2xl font-bold text-white mb-2">
+                  Plan Estándar
+                </h3>
+                <p class="text-secondary font-medium">40 minutos</p>
+              </div>
+              <div class="flex items-end mb-8">
+                <span class="text-5xl font-bold text-white">$30.000</span>
+                <span class="text-gray-400 ml-2 mb-2">COP</span>
+              </div>
+
+              <ul class="space-y-4 mb-8 text-gray-300 flex-1">
+                <li class="flex items-center">
+                  <i class="bx bx-check text-secondary mr-3 text-xl"></i>Casco
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-secondary mr-3 text-xl"
+                  ></i>Asesoría para manejar
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-secondary mr-3 text-xl"></i>Guía de
+                  puntos turísticos
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-secondary mr-3 text-xl"
+                  ></i>Acompañamiento
+                </li>
+              </ul>
+
+              <a
+                href="/contacto"
+                class="block w-full py-4 rounded-xl bg-gradient-to-r from-secondary to-accent text-white text-center font-bold hover:shadow-lg hover:shadow-secondary/50 transition-all duration-300"
+              >
+                Reservar Ahora
+              </a>
+            </div>
           </div>
-          <div class="p-8 text-center">
-            <div class="text-4xl font-bold text-primary mb-4">$30.000 <span class="text-sm text-gray-500">COP</span></div>
-            <ul class="text-left space-y-4 mb-8">
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Recorrido de 40 minutos
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Scooter eléctrico
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Casco de seguridad
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Instrucciones completas
-              </li>
-            </ul>
-            <a href="/contacto" class="bg-secondary text-white font-bold py-3 px-6 rounded-full hover:bg-primary transition-colors inline-block">Reservar Ahora</a>
-          </div>
-        </div>
+        </Animation>
 
         <!-- 60 min Plan -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
-          <div class="bg-primary py-6 text-center">
-            <h3 class="text-2xl font-bold text-white">Plan Premium</h3>
-            <p class="text-light-blue">60 minutos</p>
+        <Animation animation="fade-up" delay={300}>
+          <div
+            class="relative p-1 rounded-[2rem] bg-gradient-to-b from-white/10 to-transparent hover:from-accent/50 transition-all duration-500 group h-full"
+          >
+            <div class="absolute inset-0 bg-dark rounded-[2rem] m-[1px]"></div>
+            <div
+              class="relative h-full p-8 rounded-[2rem] bg-white/5 backdrop-blur-xl flex flex-col"
+            >
+              <div class="mb-6">
+                <h3 class="text-2xl font-bold text-white mb-2">Plan Premium</h3>
+                <p class="text-accent font-medium">60 minutos</p>
+              </div>
+              <div class="flex items-end mb-8">
+                <span class="text-5xl font-bold text-white">$40.000</span>
+                <span class="text-gray-400 ml-2 mb-2">COP</span>
+              </div>
+
+              <ul class="space-y-4 mb-8 text-gray-300 flex-1">
+                <li class="flex items-center">
+                  <i class="bx bx-check text-accent mr-3 text-xl"></i>Casco
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-accent mr-3 text-xl"></i>Asesoría
+                  para manejar
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-accent mr-3 text-xl"></i>Guía de
+                  puntos turísticos
+                </li>
+                <li class="flex items-center">
+                  <i class="bx bx-check text-accent mr-3 text-xl"
+                  ></i>Acompañamiento
+                </li>
+              </ul>
+
+              <a
+                href="/contacto"
+                class="block w-full py-4 rounded-xl bg-white/10 hover:bg-accent hover:text-white text-white text-center font-bold transition-all duration-300"
+              >
+                Reservar Ahora
+              </a>
+            </div>
           </div>
-          <div class="p-8 text-center">
-            <div class="text-4xl font-bold text-primary mb-4">$40.000 <span class="text-sm text-gray-500">COP</span></div>
-            <ul class="text-left space-y-4 mb-8">
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Recorrido de 60 minutos
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Scooter eléctrico premium
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Casco de seguridad
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Guía de puntos de interés
-              </li>
-            </ul>
-            <a href="/contacto" class="bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-secondary transition-colors inline-block">Reservar Ahora</a>
-          </div>
-        </div>
+        </Animation>
       </div>
     </div>
   </section>
 
   <!-- Group Pricing Section -->
-  <section class="py-16 bg-light-blue">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Planes Grupales y Corporativos</h2>
+  <section class="py-16 bg-dark relative border-t border-white/5">
+    <div class="container mx-auto px-4 relative z-10">
+      <Animation>
+        <h2 class="text-3xl font-bold text-center text-white mb-12">
+          Planes <span class="text-secondary">Grupales</span>
+        </h2>
+      </Animation>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Group Plan -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <h3 class="text-2xl font-bold mb-4">Tours Grupales</h3>
-          <p class="text-gray-600 mb-6">Disfruta de nuestros recorridos en grupo con guía turístico. Perfecto para familias y amigos.</p>
-          <div class="flex items-center mb-6">
-            <div class="bg-primary text-white p-3 rounded-full mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
+        <Animation animation="fade-right">
+          <div
+            class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-secondary/30 transition-all h-full"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mr-4 text-secondary"
+              >
+                <i class="bx bx-group text-3xl"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-white">Tours Grupales</h3>
+                <p class="text-gray-400">Amigos y Familia</p>
+              </div>
             </div>
-            <div>
-              <span class="block text-2xl font-bold text-primary">$40.000 <span class="text-sm text-gray-500">COP por persona</span></span>
-              <span class="text-gray-600">Grupos de 5-10 personas</span>
+
+            <div class="mb-6">
+              <span class="block text-3xl font-bold text-white mb-1"
+                >$40.000 <span class="text-sm text-gray-400 font-normal"
+                  >/ persona</span
+                ></span
+              >
+              <span class="text-secondary text-sm">Mínimo 5 personas</span>
             </div>
+
+            <ul class="space-y-3 mb-8 text-gray-300">
+              <li class="flex items-center">
+                <i class="bx bx-time-five text-secondary mr-2"></i>Duración
+                extendida (1h 30min)
+              </li>
+              <li class="flex items-center">
+                <i class="bx bx-user-voice text-secondary mr-2"></i>Guía privado
+                exclusivo
+              </li>
+              <li class="flex items-center">
+                <i class="bx bx-camera text-secondary mr-2"></i>Fotos grupales
+                incluidas
+              </li>
+              <li class="flex items-center">
+                <i class="bx bx-map-alt text-secondary mr-2"></i>Ruta
+                personalizada
+              </li>
+            </ul>
+
+            <a
+              href="/contacto"
+              class="block w-full py-3 rounded-xl border border-secondary text-secondary hover:bg-secondary hover:text-white text-center font-bold transition-all"
+            >
+              Solicitar Información
+            </a>
           </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Duración: 1 hora y 30 minutos
-            </li>
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Guía turístico especializado
-            </li>
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Paradas en puntos de interés
-            </li>
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Sesión de fotos incluida
-            </li>
-          </ul>
-          <a href="/contacto" class="bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-secondary transition-colors inline-block">Solicitar Información</a>
-        </div>
+        </Animation>
 
         <!-- Corporate Plan -->
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <h3 class="text-2xl font-bold mb-4">Eventos Corporativos</h3>
-          <p class="text-gray-600 mb-6">Paquetes personalizados para empresas. Ideal para team building y eventos especiales.</p>
-          <div class="flex items-center mb-6">
-            <div class="bg-dark-blue text-white p-3 rounded-full mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+        <Animation animation="fade-left">
+          <div
+            class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-accent/30 transition-all h-full"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mr-4 text-accent"
+              >
+                <i class="bx bx-briefcase-alt-2 text-3xl"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-white">Corporativo</h3>
+                <p class="text-gray-400">Empresas y Eventos</p>
+              </div>
             </div>
-            <div>
-              <span class="block text-2xl font-bold text-primary">Cotización Personalizada</span>
-              <span class="text-gray-600">Según necesidades y número de participantes</span>
-            </div>
-          </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Actividades de team building
-            </li>
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Personalización con logo de la empresa
-            </li>
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Catering opcional
-            </li>
-            <li class="flex items-center">
-              <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              Fotografía y video del evento
-            </li>
-          </ul>
-          <a href="/contacto" class="bg-dark-blue text-white font-bold py-3 px-6 rounded-full hover:bg-secondary transition-colors inline-block">Solicitar Cotización</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- FAQ Section -->
-  <section class="py-16">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Preguntas Frecuentes</h2>
-      <div class="max-w-3xl mx-auto space-y-6">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Qué incluye el precio del alquiler?</h3>
-          <p class="text-gray-600">El precio incluye el alquiler del scooter eléctrico, casco de seguridad, instrucciones básicas de uso y seguro contra accidentes.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Necesito experiencia previa para alquilar un scooter?</h3>
-          <p class="text-gray-600">No es necesario tener experiencia previa. Nuestro personal te dará una breve instrucción sobre cómo manejar el scooter de forma segura.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Cuál es la edad mínima para alquilar?</h3>
-          <p class="text-gray-600">La edad mínima para alquilar un scooter es de 12 años. Los menores de 18 años deben estar acompañados por un adulto responsable.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Puedo extender el tiempo de alquiler?</h3>
-          <p class="text-gray-600">Sí, puedes extender el tiempo de alquiler pagando la diferencia correspondiente, siempre que el scooter esté disponible para el período adicional.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Qué métodos de pago aceptan?</h3>
-          <p class="text-gray-600">Aceptamos efectivo, tarjetas de crédito/débito (Visa, MasterCard, American Express) y transferencias bancarias para reservas anticipadas.</p>
-        </div>
+            <div class="mb-6">
+              <span class="block text-3xl font-bold text-white mb-1"
+                >A Medida</span
+              >
+              <span class="text-accent text-sm">Cotización personalizada</span>
+            </div>
+
+            <ul class="space-y-3 mb-8 text-gray-300">
+              <li class="flex items-center">
+                <i class="bx bx-group text-accent mr-2"></i>Actividades de Team
+                Building
+              </li>
+              <li class="flex items-center">
+                <i class="bx bx-flag text-accent mr-2"></i>Branding con tu marca
+              </li>
+              <li class="flex items-center">
+                <i class="bx bx-video text-accent mr-2"></i>Cobertura de video y
+                drone
+              </li>
+              <li class="flex items-center">
+                <i class="bx bx-coffee text-accent mr-2"></i>Catering opcional
+              </li>
+            </ul>
+
+            <a
+              href="/contacto"
+              class="block w-full py-3 rounded-xl border border-accent text-accent hover:bg-accent hover:text-white text-center font-bold transition-all"
+            >
+              Solicitar Cotización
+            </a>
+          </div>
+        </Animation>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16 bg-gradient-to-r from-primary to-dark-blue text-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6 text-white">¿Listo para vivir la experiencia?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">Reserva ahora y disfruta de un recorrido inolvidable por el Malecón de Barranquilla</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto" class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-light-blue transition-colors inline-block">Reservar Ahora</a>
-        <a href="/galeria" class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-primary transition-colors inline-block">Ver Galería</a>
-      </div>
+  <section class="py-24 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 backdrop-blur-sm"
+    >
+    </div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <Animation animation="zoom-in">
+        <h2 class="text-4xl font-bold mb-6 text-white">¿Listo para empezar?</h2>
+        <p class="text-xl mb-10 max-w-2xl mx-auto text-gray-200">
+          No esperes más. Reserva tu scooter hoy mismo y vive la experiencia.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a
+            href="/contacto"
+            class="px-8 py-4 bg-white text-dark font-bold rounded-full hover:bg-secondary hover:text-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(112,0,255,0.6)]"
+          >
+            Reservar Ahora
+          </a>
+          <a
+            href="/servicios"
+            class="px-8 py-4 bg-transparent border border-white text-white font-bold rounded-full hover:bg-white/10 transition-all"
+          >
+            Ver Servicios
+          </a>
+        </div>
+      </Animation>
     </div>
   </section>
 </Layout>

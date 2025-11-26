@@ -4,38 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#004AAD',
-        'secondary': '#0075D1',
-        'accent': '#00B8E0',
-        'light-blue': '#E6F7FF',
-        'dark-blue': '#00326E',
-        'white': '#ffffff',
-        'gray': {
-          100: '#f3f4f6',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#1f2937',
-          900: '#111827'
-        },
-        'green': {
-          500: '#10b981'
-        },
-        'yellow': {
-          400: '#facc15'
+        primary: '#00f0ff', // Electric Blue
+        secondary: '#7000ff', // Neon Purple
+        accent: '#ff0099', // Hot Pink
+        dark: '#0a0a0a', // Deep Dark
+        'light-blue': '#e0f7fa', // Keep for legacy compatibility if needed, or replace
+        'dark-blue': '#050510', // Very dark blue
+        gray: {
+          950: '#0a0a0a',
         }
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'sans-serif'],
       },
       boxShadow: {
         'soft': '0 8px 30px rgba(0, 0, 0, 0.05)',
         'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-        'neon': '0 0 10px rgba(0, 163, 255, 0.5), 0 0 20px rgba(0, 163, 255, 0.3)',
+        'neon': '0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3)',
         'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)'
       },
       backgroundImage: {
@@ -51,6 +33,10 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' }
         }
+      },
+      fontFamily: {
+        sans: ['Outfit', 'Inter', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
       },
       borderRadius: {
         'xl': '1rem',

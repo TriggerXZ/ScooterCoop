@@ -1,27 +1,30 @@
 ---
-import '../styles/global.css';
-import SchemaOrg from '../components/SchemaOrg.astro';
+import "../styles/global.css";
+import SchemaOrg from "../components/SchemaOrg.astro";
 
 export interface Props {
   title: string;
   description?: string;
   canonical?: string;
-  schemaType?: 'website' | 'product';
+  schemaType?: "website" | "product";
 }
 
-const { 
-  title, 
-  description = 'Alquiler de scooters eléctricos y patinetas eléctricas en el Malecón de Barranquilla - ScooterCoop', 
+const {
+  title,
+  description = "Alquiler de scooters eléctricos y patinetas eléctricas en el Malecón de Barranquilla - ScooterCoop",
   canonical = Astro.url.pathname,
-  schemaType = 'website'
+  schemaType = "website",
 } = Astro.props;
 
 // URL canónica completa
-const canonicalURL = new URL(canonical, Astro.site || 'https://scootercoop.com').toString();
+const canonicalURL = new URL(
+  canonical,
+  Astro.site || "https://scootercoop.com",
+).toString();
 ---
 
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es" class="scroll-smooth">
   <head>
     <SchemaOrg type={schemaType} />
     <meta charset="UTF-8" />
@@ -29,182 +32,549 @@ const canonicalURL = new URL(canonical, Astro.site || 'https://scootercoop.com')
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="scooter, scootercoop, patinetas eléctricas, alquiler de scooters, scooters eléctricos, Barranquilla, Malecón, patinetas, movilidad eléctrica" />
+    <meta
+      name="keywords"
+      content="scooter, scootercoop, patinetas eléctricas, alquiler de scooters, scooters eléctricos, Barranquilla, Malecón, patinetas, movilidad eléctrica"
+    />
     <meta name="author" content="ScooterCoop" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={`${title} | ScooterCoop`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/logo.png" />
-    
+
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={`${title} | ScooterCoop`} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="/logo.png" />
-    
-    <title>{title} | ScooterCoop - Patinetas Eléctricas en Barranquilla</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- AOS CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    
-    <!-- Iconos de Boxicons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-gray-100">
+  <body
+    class="bg-dark text-white font-sans antialiased selection:bg-primary selection:text-dark"
+  >
     <!-- AOS Script -->
-    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js" defer
+    ></script>
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         AOS.init({
           duration: 800,
-          easing: 'ease-in-out',
-          once: true
+          easing: "ease-in-out",
+          once: true,
         });
       });
     </script>
-    
+
     <!-- Navbar con efecto de cristal (glassmorphism) -->
-    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/70 shadow-soft">
-      <div class="container mx-auto py-4 px-4 md:px-6">
+    <header
+      class="fixed top-0 w-full z-50 transition-all duration-300"
+      id="navbar"
+    >
+      <div
+        class="absolute inset-0 bg-dark/70 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+      >
+      </div>
+      <div class="container mx-auto py-4 px-4 md:px-6 relative z-10">
         <nav class="flex justify-between items-center">
-          <a href="/" class="text-2xl font-display font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text hover:scale-105 transition-transform duration-300">ScooterCoop</a>
-          
+          <a
+            href="/"
+            class="text-2xl font-display font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text hover:scale-105 transition-transform duration-300 flex items-center gap-2"
+          >
+            ScooterCoop
+          </a>
+
           <!-- Menú para móvil -->
           <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-black p-2 focus:outline-none">
-              <i class='bx bx-menu text-2xl'></i>
+            <button
+              id="mobile-menu-button"
+              class="text-white p-2 focus:outline-none hover:text-primary transition-colors"
+            >
+              <i class="bx bx-menu text-3xl"></i>
             </button>
           </div>
-          
+
           <!-- Menú para escritorio -->
           <ul class="hidden md:flex space-x-8 items-center">
-            <li><a href="/servicios" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Servicios</a></li>
-            <li><a href="/precios" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Precios</a></li>
-            <li><a href="/galeria" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Galería</a></li>
-            <li><a href="/ubicacion" class="font-medium hover:text-primary transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-primary after:transition-all">Ubicación</a></li>
-            <li><a href="/contacto" class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2.5 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105">Contacto</a></li>
+            <li>
+              <a
+                href="/servicios"
+                class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
+              >
+                Servicios
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/precios"
+                class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
+              >
+                Precios
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/galeria"
+                class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
+              >
+                Galería
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/ubicacion"
+                class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
+              >
+                Ubicación
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contacto"
+                class="bg-white/10 border border-white/20 text-white px-6 py-2.5 rounded-full hover:bg-primary hover:text-dark hover:border-primary transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] font-medium"
+              >
+                Contacto
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
-      
+
       <!-- Menú móvil desplegable -->
-      <div id="mobile-menu" class="hidden bg-white shadow-lg rounded-b-2xl mx-4 overflow-hidden transition-all duration-300 ease-in-out">
-        <ul class="py-2 px-4 space-y-3">
-          <li><a href="/servicios" class="block py-2 hover:text-primary transition-colors">Servicios</a></li>
-          <li><a href="/precios" class="block py-2 hover:text-primary transition-colors">Precios</a></li>
-          <li><a href="/galeria" class="block py-2 hover:text-primary transition-colors">Galería</a></li>
-          <li><a href="/ubicacion" class="block py-2 hover:text-primary transition-colors">Ubicación</a></li>
-          <li><a href="/contacto" class="block py-2 mt-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full text-center">Contacto</a></li>
+      <div
+        id="mobile-menu"
+        class="hidden absolute top-full left-0 w-full bg-dark/95 backdrop-blur-xl border-b border-white/10 shadow-2xl transition-all duration-300 ease-in-out"
+      >
+        <ul class="py-4 px-6 space-y-4">
+          <li>
+            <a
+              href="/servicios"
+              class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
+              >Servicios</a
+            >
+          </li>
+          <li>
+            <a
+              href="/precios"
+              class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
+              >Precios</a
+            >
+          </li>
+          <li>
+            <a
+              href="/galeria"
+              class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
+              >Galería</a
+            >
+          </li>
+          <li>
+            <a
+              href="/ubicacion"
+              class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
+              >Ubicación</a
+            >
+          </li>
+          <li>
+            <a
+              href="/contacto"
+              class="block py-3 mt-4 bg-gradient-to-r from-primary to-secondary text-white font-bold rounded-xl text-center shadow-lg"
+              >Contacto</a
+            >
+          </li>
         </ul>
       </div>
     </header>
 
-    <main class="min-h-screen">
+    <main class="min-h-screen pt-20">
       <slot />
     </main>
 
-    <footer class="bg-gradient-to-r from-dark-blue to-primary text-white mt-12 py-16 relative overflow-hidden">
+    <footer
+      class="bg-dark border-t border-white/10 mt-0 py-16 relative overflow-hidden"
+    >
       <!-- Formas decorativas en el footer -->
-      <div class="absolute top-0 left-0 w-full h-full opacity-10">
-        <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-white"></div>
-        <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-white"></div>
+      <div
+        class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none"
+      >
+        <div
+          class="absolute top-[-50%] left-[-10%] w-[500px] h-[500px] rounded-full bg-primary/20 blur-[100px]"
+        >
+        </div>
+        <div
+          class="absolute bottom-[-50%] right-[-10%] w-[500px] h-[500px] rounded-full bg-secondary/20 blur-[100px]"
+        >
+        </div>
       </div>
-      
+
       <div class="container mx-auto px-4 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div class="md:col-span-1">
-            <h3 class="text-2xl font-display font-bold mb-6 text-white bg-gradient-to-r from-white to-light-blue text-transparent bg-clip-text">ScooterCoop</h3>
-            <p class="mb-6">Tu mejor opción para recorrer el Malecón de Barranquilla con estilo y comodidad.</p>
+            <h3
+              class="text-2xl font-display font-bold mb-6 flex items-center gap-2"
+            >
+              <i class="bx bx-bolt-circle text-primary animate-pulse-slow"></i>
+              <span
+                class="bg-gradient-to-r from-white to-gray-400 text-transparent bg-clip-text"
+                >ScooterCoop</span
+              >
+            </h3>
+            <p class="mb-6 text-gray-400 leading-relaxed">
+              Revolucionando la movilidad en el Malecón. Estilo, velocidad y
+              sostenibilidad en cada viaje.
+            </p>
             <div class="flex space-x-4">
-              <a href="https://www.instagram.com/scootercoop_/" target="_blank" class="text-white hover:text-accent transition-colors" aria-label="Instagram">
-                <i class='bx bxl-instagram text-2xl'></i>
+              <a
+                href="https://www.instagram.com/scootercoop_/"
+                target="_blank"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] hover:-translate-y-1"
+                aria-label="Instagram"
+              >
+                <i class="bx bxl-instagram text-xl"></i>
               </a>
-              <a href="#" class="text-white hover:text-accent transition-colors" aria-label="Facebook">
-                <i class='bx bxl-facebook text-2xl'></i>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] hover:-translate-y-1"
+                aria-label="Facebook"
+              >
+                <i class="bx bxl-facebook text-xl"></i>
               </a>
-              <a href="#" class="text-white hover:text-accent transition-colors" aria-label="Twitter">
-                <i class='bx bxl-twitter text-2xl'></i>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] hover:-translate-y-1"
+                aria-label="Twitter"
+              >
+                <i class="bx bxl-twitter text-xl"></i>
               </a>
-              <a href="#" class="text-white hover:text-accent transition-colors" aria-label="WhatsApp">
-                <i class='bx bxl-whatsapp text-2xl'></i>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all duration-300 hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] hover:-translate-y-1"
+                aria-label="WhatsApp"
+              >
+                <i class="bx bxl-whatsapp text-xl"></i>
               </a>
             </div>
           </div>
-          
+
+          <div class="md:col-span-1"></div>
+
           <div>
-          </div>
-          
-          <div>
-            <h3 class="text-xl font-bold mb-6 text-white">Contacto</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class='bx bx-map text-xl mr-2 mt-1'></i>
-                <span>Malecón del Río, Barranquilla, Colombia</span>
+            <h3
+              class="text-lg font-bold mb-6 text-white border-b border-primary/30 inline-block pb-2"
+            >
+              Contacto
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start group">
+                <div
+                  class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3 mt-1 group-hover:bg-primary/20 group-hover:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all"
+                >
+                  <i class="bx bx-map text-primary"></i>
+                </div>
+                <span
+                  class="text-gray-400 group-hover:text-white transition-colors"
+                  >Malecón del Río, Barranquilla, Colombia</span
+                >
               </li>
-              <li class="flex items-center">
-                <i class='bx bx-phone text-xl mr-2'></i>
-                <span>+57 300 123 4567</span>
+              <li class="flex items-center group">
+                <div
+                  class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3 group-hover:bg-primary/20 group-hover:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all"
+                >
+                  <i class="bx bx-phone text-primary"></i>
+                </div>
+                <span
+                  class="text-gray-400 group-hover:text-white transition-colors"
+                  >+57 300 123 4567</span
+                >
               </li>
-              <li class="flex items-center">
-                <i class='bx bx-envelope text-xl mr-2'></i>
-                <span>scootercoopinfo@gmail.com</span>
+              <li class="flex items-center group">
+                <div
+                  class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3 group-hover:bg-primary/20 group-hover:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all"
+                >
+                  <i class="bx bx-envelope text-primary"></i>
+                </div>
+                <span
+                  class="text-gray-400 group-hover:text-white transition-colors"
+                  >info@scootercoop.com</span
+                >
               </li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 class="text-xl font-bold mb-6 text-white">Horario</h3>
-            <ul class="space-y-3">
-              <li class="flex items-center">
-                <i class='bx bx-time text-xl mr-2'></i>
+            <h3
+              class="text-lg font-bold mb-6 text-white border-b border-secondary/30 inline-block pb-2"
+            >
+              Horario
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start group">
+                <div
+                  class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center mr-3 mt-1 group-hover:bg-secondary/20 group-hover:shadow-[0_0_10px_rgba(112,0,255,0.2)] transition-all"
+                >
+                  <i class="bx bx-time text-secondary"></i>
+                </div>
                 <div>
-                  <p class="font-medium">Lunes a Viernes</p>
-                  <p>3:00 PM - 10:00 PM</p>
+                  <p
+                    class="font-medium text-white group-hover:text-secondary transition-colors"
+                  >
+                    Lunes a Viernes
+                  </p>
+                  <p class="text-gray-400 text-sm">3:00 PM - 10:00 PM</p>
                 </div>
               </li>
-              <li class="flex items-center">
-                <i class='bx bx-time text-xl mr-2'></i>
+              <li class="flex items-start group">
+                <div
+                  class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center mr-3 mt-1 group-hover:bg-secondary/20 group-hover:shadow-[0_0_10px_rgba(112,0,255,0.2)] transition-all"
+                >
+                  <i class="bx bx-calendar-star text-secondary"></i>
+                </div>
                 <div>
-                  <p class="font-medium">Sábados y Domingos</p>
-                  <p>2:00 PM - 11:00 PM</p>
+                  <p
+                    class="font-medium text-white group-hover:text-secondary transition-colors"
+                  >
+                    Sábados y Domingos
+                  </p>
+                  <p class="text-gray-400 text-sm">2:00 PM - 11:00 PM</p>
                 </div>
               </li>
             </ul>
           </div>
         </div>
-        
-        <div class="mt-12 pt-8 border-t border-white/20 text-center">
-          <p>&copy; {new Date().getFullYear()} ScooterCop. Todos los derechos reservados.</p>
+
+        <div
+          class="mt-16 pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 text-sm">
+            &copy; {new Date().getFullYear()} ScooterCoop. Todos los derechos reservados.
+          </p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <button
+              id="terms-btn"
+              class="text-gray-500 hover:text-primary text-sm transition-colors focus:outline-none"
+              >Términos</button
+            >
+            <button
+              id="privacy-btn"
+              class="text-gray-500 hover:text-primary text-sm transition-colors focus:outline-none"
+              >Privacidad</button
+            >
+          </div>
         </div>
       </div>
     </footer>
-    
-    <!-- Script para el menú móvil -->
+
+    <!-- Modals -->
+    <!-- Terms Modal -->
+    <div
+      id="terms-modal"
+      class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4"
+    >
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        id="terms-overlay"
+      >
+      </div>
+      <div
+        class="relative bg-dark border border-primary/30 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(0,240,255,0.1)]"
+      >
+        <button
+          id="close-terms"
+          class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+        >
+          <i class="bx bx-x text-3xl"></i>
+        </button>
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+          <i class="bx bx-file text-primary"></i> Términos y Condiciones
+        </h2>
+        <div class="space-y-4 text-gray-300 leading-relaxed">
+          <p>
+            Bienvenido a ScooterCoop. Al alquilar nuestros scooters, aceptas los
+            siguientes términos:
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong class="text-white">Requisitos:</strong> Debes ser mayor de
+              edad (18+) y presentar un documento de identidad válido.
+            </li>
+            <li>
+              <strong class="text-white">Responsabilidad:</strong> El usuario es
+              totalmente responsable de cualquier daño causado al scooter o a terceros
+              durante el periodo de alquiler.
+            </li>
+            <li>
+              <strong class="text-white">Uso Correcto:</strong> Es obligatorio el
+              uso de casco. Está prohibido transitar por zonas no autorizadas (como
+              arena o agua) y realizar maniobras peligrosas.
+            </li>
+            <li>
+              <strong class="text-white">Devolución:</strong> El scooter debe entregarse
+              en el mismo estado en que se recibió y dentro del tiempo acordado.
+              Retrasos pueden generar cargos adicionales.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div
+      id="privacy-modal"
+      class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4"
+    >
+      <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        id="privacy-overlay"
+      >
+      </div>
+      <div
+        class="relative bg-dark border border-secondary/30 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-[0_0_50px_rgba(112,0,255,0.1)]"
+      >
+        <button
+          id="close-privacy"
+          class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+        >
+          <i class="bx bx-x text-3xl"></i>
+        </button>
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+          <i class="bx bx-shield-quarter text-secondary"></i> Política de Privacidad
+        </h2>
+        <div class="space-y-4 text-gray-300 leading-relaxed">
+          <p>
+            En ScooterCoop nos tomamos muy en serio tu privacidad. Así es como
+            manejamos tus datos:
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong class="text-white">Datos Recopilados:</strong> Solicitamos
+              información básica como nombre, teléfono, correo electrónico y una
+              copia de tu documento de identidad para fines de seguridad y contacto.
+            </li>
+            <li>
+              <strong class="text-white">Uso de la Información:</strong> Tus datos
+              se utilizan exclusivamente para gestionar el alquiler, contactarte
+              en caso de emergencia y mejorar nuestro servicio.
+            </li>
+            <li>
+              <strong class="text-white">Seguridad:</strong> No compartimos ni vendemos
+              tu información personal a terceros. Tus datos están protegidos y se
+              almacenan de forma segura.
+            </li>
+            <li>
+              <strong class="text-white">Derechos:</strong> Tienes derecho a solicitar
+              la eliminación de tus datos de nuestros registros una vez finalizado
+              el servicio y cumplidas todas las obligaciones.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script para el menú móvil, navbar scroll y modales -->
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', function() {
-          mobileMenu.classList.toggle('hidden');
-          
-          // Cambiar el icono del botón
-          const icon = mobileMenuButton.querySelector('i');
-          if (mobileMenu.classList.contains('hidden')) {
-            icon.classList.remove('bx-x');
-            icon.classList.add('bx-menu');
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const navbar = document.getElementById("navbar");
+
+        // Mobile Menu Toggle
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          const icon = mobileMenuButton.querySelector("i");
+          if (mobileMenu.classList.contains("hidden")) {
+            icon.classList.remove("bx-x");
+            icon.classList.add("bx-menu");
           } else {
-            icon.classList.remove('bx-menu');
-            icon.classList.add('bx-x');
+            icon.classList.remove("bx-menu");
+            icon.classList.add("bx-x");
           }
         });
+
+        // Navbar Scroll Effect
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            navbar.classList.add("py-2");
+            navbar.querySelector(".bg-dark\\/70").classList.add("bg-dark/90");
+          } else {
+            navbar.classList.remove("py-2");
+            navbar
+              .querySelector(".bg-dark\\/70")
+              .classList.remove("bg-dark/90");
+          }
+        });
+
+        // Modals Logic with Holographic Pop Animation
+        const setupModal = (btnId, modalId, closeBtnId, overlayId) => {
+          const btn = document.getElementById(btnId);
+          const modal = document.getElementById(modalId);
+          const modalContent = modal.querySelector("div.relative"); // Select the content container
+          const closeBtn = document.getElementById(closeBtnId);
+          const overlay = document.getElementById(overlayId);
+
+          // Add initial styles for animation (Hidden State)
+          modalContent.style.transition =
+            "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)"; // Spring effect
+          modalContent.style.transform = "scale(0.95) translateY(10px)";
+          modalContent.style.opacity = "0";
+          modalContent.style.filter = "blur(10px)"; // Holographic blur start
+
+          const openModal = () => {
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+
+            // Trigger animation
+            requestAnimationFrame(() => {
+              modalContent.style.transform = "scale(1) translateY(0)";
+              modalContent.style.opacity = "1";
+              modalContent.style.filter = "blur(0px)"; // Focus
+            });
+          };
+
+          const closeModal = () => {
+            // Closing animation (Quick fade out)
+            modalContent.style.transition = "all 0.3s ease-in"; // Faster close
+            modalContent.style.transform = "scale(0.95) translateY(10px)";
+            modalContent.style.opacity = "0";
+            modalContent.style.filter = "blur(10px)";
+
+            // Wait for animation to finish before hiding
+            setTimeout(() => {
+              modal.classList.add("hidden");
+              document.body.style.overflow = "";
+
+              // Reset styles for next opening (re-apply spring transition)
+              modalContent.style.transition =
+                "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+            }, 300);
+          };
+
+          if (btn) btn.addEventListener("click", openModal);
+          if (closeBtn) closeBtn.addEventListener("click", closeModal);
+          if (overlay) overlay.addEventListener("click", closeModal);
+        };
+
+        setupModal("terms-btn", "terms-modal", "close-terms", "terms-overlay");
+        setupModal(
+          "privacy-btn",
+          "privacy-modal",
+          "close-privacy",
+          "privacy-overlay",
+        );
       });
     </script>
   </body>

@@ -1,47 +1,81 @@
-# Astro Starter Kit: Minimal
+<div align="center">
 
-```sh
-npm create astro@latest -- --template minimal
+# 🛴 ScooterCoop
+
+**Alquiler de Scooters Eléctricos en el Malecón de Barranquilla**
+
+[![Astro](https://img.shields.io/badge/Astro-5.6.1-FF5D01?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-blue?style=for-the-badge)](LICENSE)
+
+</div>
+
+## 🚀 Descripción
+
+ScooterCoop es una plataforma moderna para el alquiler de scooters eléctricos en el Malecón del Río de Barranquilla. Ofrecemos la mejor experiencia para explorar este hermoso espacio urbano con estilo y comodidad.
+
+### ✨ Características Principales
+
+- **Diseño Moderno**: Interfaz elegante con efectos visuales avanzados y animaciones fluidas
+- **Responsive**: Experiencia perfecta en dispositivos móviles, tablets y escritorio
+- **Optimizado para SEO**: Estructura semántica y metadatos optimizados
+- **Rendimiento Excepcional**: Carga rápida y experiencia de usuario fluida
+
+## 🛠️ Tecnologías
+
+- **[Astro](https://astro.build)**: Framework web de alto rendimiento
+- **[Tailwind CSS](https://tailwindcss.com)**: Framework CSS utilitario para diseño rápido
+- **[AOS](https://michalsnik.github.io/aos/)**: Biblioteca para animaciones al hacer scroll
+- **[Boxicons](https://boxicons.com/)**: Conjunto de iconos de alta calidad
+
+## 📂 Estructura del Proyecto
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
+├── public/            # Activos estáticos (imágenes, favicon, etc.)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/    # Componentes reutilizables
+│   ├── layouts/       # Plantillas de página
+│   ├── pages/         # Páginas del sitio
+│   ├── scripts/       # Scripts JavaScript
+│   └── styles/        # Estilos globales
+└── package.json       # Dependencias y scripts
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Comandos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Comando              | Acción                                           |
+| :------------------- | :----------------------------------------------- |
+| `npm install`        | Instala las dependencias                         |
+| `npm run dev`        | Inicia servidor de desarrollo en `localhost:4321`|
+| `npm run build`      | Construye el sitio para producción en `./dist/`  |
+| `npm run preview`    | Vista previa local de la versión de producción   |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 📱 Servicios
 
-## 🧞 Commands
+- **Alquiler por Tiempo**: Paquetes de 30, 40 o 60 minutos
+- **Recorridos Guiados**: Explora el Malecón con guías expertos
+- **Eventos Especiales**: Celebraciones, cumpleaños y eventos corporativos
+- **Membresías**: Beneficios exclusivos para usuarios frecuentes
 
-All commands are run from the root of the project, from a terminal:
+## 📍 Ubicación
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Nos encontramos en el **Malecón del Río**, Barranquilla, Colombia.
 
-## 👀 Want to learn more?
+## 📞 Contacto
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Teléfono**: +57 300 123 4567
+- **Email**: scootercoopinfo@gmail.com
+- **Instagram**: [@scootercoop_](https://www.instagram.com/scootercoop_/)
+
+## 🔒 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+---
+
+<div align="center">
+
+**ScooterCoop** © 2024. Todos los derechos reservados.
+
+</div>

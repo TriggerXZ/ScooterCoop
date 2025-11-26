@@ -1,172 +1,311 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Animation from "../components/Animation.astro";
 ---
 
-<Layout title="Servicios" description="Conoce nuestros servicios de alquiler de scooters eléctricos en el Malecón de Barranquilla">
+<Layout
+  title="Servicios"
+  description="Conoce nuestros servicios de alquiler de scooters eléctricos en el Malecón de Barranquilla"
+>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-primary to-dark-blue text-white py-16">
-    <div class="container mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Nuestros Servicios</h1>
-      <p class="text-xl mb-8">Descubre todas las opciones que tenemos para ti</p>
+  <section class="relative overflow-hidden py-24 bg-dark">
+    <!-- Fondo Dinámico -->
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-dark to-dark opacity-40"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 bg-[length:40px_40px]"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <Animation animation="fade-down">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+          Nuestros <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+            >Servicios</span
+          >
+        </h1>
+      </Animation>
+      <Animation animation="fade-up" delay={200}>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Descubre todas las opciones que tenemos para ti. Tecnología, seguridad
+          y diversión en cada trayecto.
+        </p>
+      </Animation>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section class="py-16">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+  <section class="py-16 bg-dark relative">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 gap-12">
         <!-- Service 1 -->
-        <div class="flex flex-col md:flex-row gap-6">
-          <div class="bg-primary text-white p-4 rounded-full h-16 w-16 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <Animation animation="fade-up" delay={100}>
+          <div
+            class="group relative p-1 rounded-3xl bg-gradient-to-r from-white/10 to-transparent hover:from-primary/50 transition-all duration-500"
+          >
+            <div class="absolute inset-0 bg-dark rounded-3xl m-[1px]"></div>
+            <div
+              class="relative p-8 md:p-12 rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col md:flex-row gap-8 items-center"
+            >
+              <div
+                class="w-24 h-24 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0 text-primary group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="bx bx-time-five text-5xl"></i>
+              </div>
+              <div class="flex-1 text-center md:text-left">
+                <h3
+                  class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors"
+                >
+                  Alquiler por Tiempo
+                </h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                  Elige entre nuestros paquetes de 30, 40 o 60 minutos según tus
+                  necesidades. Ideal para recorrer el Malecón a tu ritmo con la
+                  mejor tecnología.
+                </p>
+                <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-primary/30 transition-colors"
+                  >
+                    <i class="bx bx-stopwatch text-primary mr-2 text-xl"></i>
+                    30 min: <span class="text-white font-bold ml-1"
+                      >$25.000</span
+                    >
+                  </li>
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-primary/30 transition-colors"
+                  >
+                    <i class="bx bx-timer text-primary mr-2 text-xl"></i>
+                    40 min: <span class="text-white font-bold ml-1"
+                      >$30.000</span
+                    >
+                  </li>
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-primary/30 transition-colors"
+                  >
+                    <i class="bx bx-time-five text-primary mr-2 text-xl"></i>
+                    60 min: <span class="text-white font-bold ml-1"
+                      >$40.000</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 class="text-2xl font-bold mb-3">Alquiler por Tiempo</h3>
-            <p class="text-gray-600 mb-4">Elige entre nuestros paquetes de 30, 40 o 60 minutos según tus necesidades. Ideal para recorrer el Malecón a tu ritmo.</p>
-            <ul class="space-y-2">
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                30 minutos: $25.000 COP
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                40 minutos: $30.000 COP
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                60 minutos: $35.000 COP
-              </li>
-            </ul>
-          </div>
-        </div>
+        </Animation>
 
         <!-- Service 2 -->
-        <div class="flex flex-col md:flex-row gap-6">
-          <div class="bg-secondary text-white p-4 rounded-full h-16 w-16 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
+        <Animation animation="fade-up" delay={200}>
+          <div
+            class="group relative p-1 rounded-3xl bg-gradient-to-r from-white/10 to-transparent hover:from-secondary/50 transition-all duration-500"
+          >
+            <div class="absolute inset-0 bg-dark rounded-3xl m-[1px]"></div>
+            <div
+              class="relative p-8 md:p-12 rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col md:flex-row gap-8 items-center"
+            >
+              <div
+                class="w-24 h-24 rounded-2xl bg-secondary/20 flex items-center justify-center flex-shrink-0 text-secondary group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="bx bx-group text-5xl"></i>
+              </div>
+              <div class="flex-1 text-center md:text-left">
+                <h3
+                  class="text-3xl font-bold text-white mb-4 group-hover:text-secondary transition-colors"
+                >
+                  Tours Grupales
+                </h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                  Disfruta de nuestros recorridos en grupo con guía turístico.
+                  Perfecto para familias, amigos o empresas que buscan una
+                  experiencia compartida.
+                </p>
+                <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-secondary/30 transition-colors"
+                  >
+                    <i class="bx bx-user-check text-secondary mr-2 text-xl"></i>
+                    Grupos 20-50 pax
+                  </li>
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-secondary/30 transition-colors"
+                  >
+                    <i class="bx bx-time text-secondary mr-2 text-xl"></i>
+                    1h 30min
+                  </li>
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-secondary/30 transition-colors"
+                  >
+                    <i class="bx bx-money text-secondary mr-2 text-xl"></i>
+                    $40.000 / persona
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 class="text-2xl font-bold mb-3">Tours Grupales</h3>
-            <p class="text-gray-600 mb-4">Disfruta de nuestros recorridos en grupo con guía turístico. Perfecto para familias, amigos o empresas.</p>
-            <ul class="space-y-2">
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Grupos de 5-10 personas
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Duración: 1 hora y 30 minutos
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Precio por persona: $40.000 COP
-              </li>
-            </ul>
-          </div>
-        </div>
+        </Animation>
 
         <!-- Service 3 -->
-        <div class="flex flex-col md:flex-row gap-6">
-          <div class="bg-dark-blue text-white p-4 rounded-full h-16 w-16 flex items-center justify-center flex-shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+        <Animation animation="fade-up" delay={300}>
+          <div
+            class="group relative p-1 rounded-3xl bg-gradient-to-r from-white/10 to-transparent hover:from-accent/50 transition-all duration-500"
+          >
+            <div class="absolute inset-0 bg-dark rounded-3xl m-[1px]"></div>
+            <div
+              class="relative p-8 md:p-12 rounded-3xl bg-white/5 backdrop-blur-xl flex flex-col md:flex-row gap-8 items-center"
+            >
+              <div
+                class="w-24 h-24 rounded-2xl bg-accent/20 flex items-center justify-center flex-shrink-0 text-accent group-hover:scale-110 transition-transform duration-300"
+              >
+                <i class="bx bx-party text-5xl"></i>
+              </div>
+              <div class="flex-1 text-center md:text-left">
+                <h3
+                  class="text-3xl font-bold text-white mb-4 group-hover:text-accent transition-colors"
+                >
+                  Eventos Especiales
+                </h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                  Organizamos eventos especiales para cumpleaños, despedidas,
+                  eventos corporativos y más. Hacemos de tu celebración algo
+                  único.
+                </p>
+                <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-accent/30 transition-colors"
+                  >
+                    <i class="bx bx-star text-accent mr-2 text-xl"></i>
+                    Personalizado
+                  </li>
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-accent/30 transition-colors"
+                  >
+                    <i class="bx bx-camera text-accent mr-2 text-xl"></i>
+                    Fotos Incluidas
+                  </li>
+                  <li
+                    class="flex items-center justify-center md:justify-start text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/10 hover:border-accent/30 transition-colors"
+                  >
+                    <i class="bx bx-chat text-accent mr-2 text-xl"></i>
+                    Cotización
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 class="text-2xl font-bold mb-3">Eventos Especiales</h3>
-            <p class="text-gray-600 mb-4">Organizamos eventos especiales para cumpleaños, despedidas de soltero/a, eventos corporativos y más.</p>
-            <ul class="space-y-2">
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Paquetes personalizados
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Incluye fotografías del evento
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                Consulta precios según necesidades
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        
-        </div>
+        </Animation>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-16 bg-light-blue">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Preguntas Frecuentes</h2>
+  <section class="py-24 bg-dark relative border-t border-white/5">
+    <div class="container mx-auto px-4">
+      <Animation>
+        <h2 class="text-3xl font-bold text-center text-white mb-16">
+          Preguntas <span class="text-primary">Frecuentes</span>
+        </h2>
+      </Animation>
       <div class="max-w-3xl mx-auto space-y-6">
         <!-- FAQ Item 1 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Necesito experiencia previa para alquilar un scooter?</h3>
-          <p class="text-gray-600">No, no es necesario tener experiencia previa. Nuestros scooters son fáciles de manejar y te daremos una breve instrucción antes de comenzar tu recorrido.</p>
-        </div>
-        
+        <Animation animation="fade-up" delay={100}>
+          <div
+            class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-primary/30 transition-all"
+          >
+            <h3 class="text-xl font-bold mb-3 text-white flex items-center">
+              <i class="bx bx-help-circle text-primary mr-3 text-2xl"></i>
+              ¿Necesito experiencia previa?
+            </h3>
+            <p class="text-gray-400 pl-9">
+              No, no es necesario. Nuestros scooters son muy fáciles de manejar
+              y te daremos una inducción completa antes de iniciar.
+            </p>
+          </div>
+        </Animation>
+
         <!-- FAQ Item 2 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Qué documentos necesito para alquilar?</h3>
-          <p class="text-gray-600">Solo necesitas presentar tu documento de identidad (cédula, pasaporte o documento extranjero) y firmar nuestro formulario de responsabilidad.</p>
-        </div>
-        
+        <Animation animation="fade-up" delay={200}>
+          <div
+            class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-primary/30 transition-all"
+          >
+            <h3 class="text-xl font-bold mb-3 text-white flex items-center">
+              <i class="bx bx-id-card text-primary mr-3 text-2xl"></i>
+              ¿Qué documentos necesito?
+            </h3>
+            <p class="text-gray-400 pl-9">
+              Solo necesitas presentar tu documento de identidad físico (cédula,
+              pasaporte) y firmar el formulario de responsabilidad.
+            </p>
+          </div>
+        </Animation>
+
         <!-- FAQ Item 3 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Hay límite de edad para alquilar?</h3>
-          <p class="text-gray-600">Sí, debes ser mayor de 12 años para alquilar un scooter. Los menores de edad pueden utilizarlos bajo la supervisión y responsabilidad de un adulto.</p>
-        </div>
-        
+        <Animation animation="fade-up" delay={300}>
+          <div
+            class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-primary/30 transition-all"
+          >
+            <h3 class="text-xl font-bold mb-3 text-white flex items-center">
+              <i class="bx bx-user text-primary mr-3 text-2xl"></i>
+              ¿Hay límite de edad?
+            </h3>
+            <p class="text-gray-400 pl-9">
+              Sí, debes ser mayor de 12 años. Los menores de edad pueden
+              conducir bajo la supervisión constante de un adulto responsable.
+            </p>
+          </div>
+        </Animation>
+
         <!-- FAQ Item 4 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Puedo reservar con anticipación?</h3>
-          <p class="text-gray-600">Sí, te recomendamos reservar con anticipación, especialmente en fines de semana y temporada alta. Puedes hacerlo a través de nuestro formulario de contacto o llamándonos directamente.</p>
-        </div>
-        
-        <!-- FAQ Item 5 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-bold mb-3">¿Qué métodos de pago aceptan?</h3>
-          <p class="text-gray-600">Aceptamos efectivo, tarjetas de crédito/débito (Visa, MasterCard, American Express) y transferencias bancarias para reservas anticipadas.</p>
-        </div>
+        <Animation animation="fade-up" delay={400}>
+          <div
+            class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-primary/30 transition-all"
+          >
+            <h3 class="text-xl font-bold mb-3 text-white flex items-center">
+              <i class="bx bx-credit-card text-primary mr-3 text-2xl"></i>
+              ¿Métodos de pago?
+            </h3>
+            <p class="text-gray-400 pl-9">
+              Aceptamos efectivo, Nequi, Daviplata y todas las tarjetas de
+              crédito/débito. También transferencias para reservas.
+            </p>
+          </div>
+        </Animation>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
-  <section class="py-16 bg-gradient-to-r from-primary to-dark-blue text-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6 text-white">¿Listo para vivir la experiencia?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">Reserva ahora y disfruta de un recorrido inolvidable por el Malecón de Barranquilla</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contacto" class="bg-white text-primary font-bold py-3 px-8 rounded-full hover:bg-light-blue transition-colors inline-block">Reservar Ahora</a>
-        <a href="/galeria" class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-primary transition-colors inline-block">Ver Galería</a>
-      </div>
+  <section class="py-24 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 backdrop-blur-sm"
+    >
+    </div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <Animation animation="zoom-in">
+        <h2 class="text-4xl font-bold mb-6 text-white">
+          ¿Listo para vivir la experiencia?
+        </h2>
+        <p class="text-xl mb-10 max-w-2xl mx-auto text-gray-200">
+          Reserva ahora y asegura tu scooter para un recorrido inolvidable por
+          el Malecón.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a
+            href="/contacto"
+            class="px-8 py-4 bg-white text-dark font-bold rounded-full hover:bg-primary hover:text-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)]"
+          >
+            Reservar Ahora
+          </a>
+          <a
+            href="/galeria"
+            class="px-8 py-4 bg-transparent border border-white text-white font-bold rounded-full hover:bg-white/10 transition-all"
+          >
+            Ver Galería
+          </a>
+        </div>
+      </Animation>
     </div>
   </section>
 </Layout>
