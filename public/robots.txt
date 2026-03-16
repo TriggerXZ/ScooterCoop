@@ -1,4 +1,28 @@
+# Robots.txt para ScooterCoop
+# https://scootercoop.com
+
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://scootercoop.com/sitemap.xml
+
+# Archivos disallowed (si hay)
+Disallow: /404.html
+Disallow: /gracias
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-Image
+Allow: /
+User-agent: Googlebot-News
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /

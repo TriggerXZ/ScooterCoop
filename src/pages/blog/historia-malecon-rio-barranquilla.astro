@@ -1,0 +1,176 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const post = {
+  title: "Historia del Malecón del Río Barranquilla",
+  excerpt: "Un recorrido por la historia y transformación del Malecón del Río, el icono de la movilidad y entretenimiento barranquillero.",
+  image: "/paisaje.jpg",
+  date: "2026-02-20",
+  category: "Historia",
+  author: "ScooterCoop Team"
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title,
+  "description": post.excerpt,
+  "image": "https://scootercoop.com" + post.image,
+  "datePublished": post.date,
+  "author": {
+    "@type": "Organization",
+    "name": "ScooterCoop"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ScooterCoop",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://scootercoop.com/logo.png"
+    }
+  }
+};
+---
+
+<Layout
+  title={post.title}
+  description={post.excerpt}
+  schemaType="website"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden py-24 bg-dark">
+    <div class="absolute inset-0">
+      <img src={post.image} alt={post.title} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors mb-8">
+        <i class="bx bx-arrow-back"></i>
+        Volver al Blog
+      </a>
+      
+      <span class="inline-block px-4 py-1 bg-secondary/20 text-secondary text-sm font-bold rounded-full mb-4">
+        {post.category}
+      </span>
+      
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 max-w-4xl">
+        {post.title}
+      </h1>
+      
+      <div class="flex items-center gap-6 text-gray-400">
+        <span class="flex items-center gap-2">
+          <i class="bx bx-calendar"></i>
+          {new Date(post.date).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </span>
+        <span class="flex items-center gap-2">
+          <i class="bx bx-user"></i>
+          {post.author}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 bg-dark">
+    <div class="container mx-auto px-4">
+      <article class="max-w-3xl mx-auto prose prose-invert prose-lg">
+        <p class="text-xl text-gray-300 lead">
+          El Malecón del Río de Barranquilla representa mucho más que un simple espacio público: 
+          es el corazón de la vida social, cultural y turística de la "Eternal Spring".
+        </p>
+
+        <h2>🏗️ Orígenes y Construcción</h2>
+        <p>
+          El Malecón del Río Magdalena fue construido en la década de 1970 como parte de un ambicioso 
+          proyecto de desarrollo urbano. El objetivo era crear un espacio que conectara a los barranquilleros 
+          con su río, creando un referente de orgullo local.
+        </p>
+        <p>
+          A lo largo de las décadas, el malecón ha sido testigo de innumerables transformaciones, 
+          desde la menambahkan de monumentos icónicos hasta la renovación de sus espacios recreativos.
+        </p>
+
+        <h2>🎭 El Malecón como Centro Cultural</h2>
+        <p>
+          El Malecón siempre ha sido un punto de encuentro para la cultura barranquillera:
+        </p>
+        <ul>
+          <li><strong>Karneval:</strong> Es escenario principal de desfiles y eventos del Carnaval</li>
+          <li><strong>Arte público:</strong> Alberga esculturas y murales de artistas locales</li>
+          <li><strong>Música:</strong>constantemente hay presentaciones de música tropical y folklore</li>
+          <li><strong>Gastronomía:</strong> Restaurantes y kioskos ofrecen lo mejor de la comida costeña</li>
+        </ul>
+
+        <h2>🗿 Monumentos Icónicos</h2>
+        <p>
+          Varios monumentos han convertido al Malecón en un museo al aire libre:
+        </p>
+        <ul>
+          <li><strong>La Reina del Río:</strong> Icono que representa la conexión con el Magdalena</li>
+          <li><strong>La Tortuga:</strong> Escultura emblemática de la fauna local</li>
+          <li><strong>Monumento a losdd:</strong> Homenaje a los fundadores de la ciudad</li>
+        </ul>
+
+        <h2>🚴♀️ El Malecón Hoy</h2>
+        <p>
+          Hoy en día, el Malecón del Río es destino obligatorio para turistas y locales. 
+          Con más de 5 kilómetros de extensión, ofrece:
+        </p>
+        <ul>
+          <li>Zonas verdes para deportes y recreation</li>
+          <li>Ciclovías para recorrer en bicicleta o scooter</li>
+          <li>Miradores con vistas espectaculares al río</li>
+          <li>Espacios para eventos culturales y festivales</li>
+        </ul>
+
+        <div class="bg-white/5 border border-primary/30 rounded-2xl p-6 my-8">
+          <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+            <i class="bx bx-bolt text-primary"></i>
+            Explora el Malecón con ScooterCoop
+          </h3>
+          <p class="text-gray-300 mb-4">
+            Vive la historia del Malecón de una manera única. Alquila un scooter eléctrico 
+            y recorre todos los puntos de interés con nosotros.
+          </p>
+          <a
+            href="/reservas"
+            class="inline-block px-6 py-3 bg-primary text-dark font-bold rounded-full hover:bg-white transition-colors"
+          >
+            Reservar Tour
+          </a>
+        </div>
+
+        <h2>🔮 El Futuro del Malecón</h2>
+        <p>
+          El Malecón continúa evolucionando con nuevos proyectos de renovación urbana. 
+          Se esperan más espacios peatonales, áreas verdes y opciones de movilidad sostenible 
+          que lo convertirán en un destino aún más atractivo para el turismo.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Related Posts -->
+  <section class="py-16 bg-dark border-t border-white/5">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-white mb-8">Otros Artículos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/blog/que-ver-en-el-malecon-barranquilla" class="block bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-secondary/50 transition-all">
+          <h3 class="font-bold text-white mb-2">Qué ver en el Malecón</h3>
+          <p class="text-gray-400 text-sm">Los puntos turísticos imperdibles</p>
+        </a>
+        <a href="/blog/mejores-horarios-para-visitar-malecon" class="block bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-secondary/50 transition-all">
+          <h3 class="font-bold text-white mb-2">Mejores horarios</h3>
+          <p class="text-gray-400 text-sm">Cuándo visitar el Malecón</p>
+        </a>
+        <a href="/blog/beneficios-scooter-electrico" class="block bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-secondary/50 transition-all">
+          <h3 class="font-bold text-white mb-2">Beneficios del scooter</h3>
+          <p class="text-gray-400 text-sm">Por qué elegir scooter eléctrico</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

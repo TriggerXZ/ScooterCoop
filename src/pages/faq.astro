@@ -1,0 +1,289 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Animation from "../components/Animation.astro";
+
+const faqData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuáles son los requisitos para alquilar un scooter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para alquilar un scooter en ScooterCoop debes: Ser mayor de 18 años, presentar documento de identidad válido (cédula o pasaporte), y usar casco obligatorio durante todo el recorrido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito licencia de conducir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No necesitas licencia de conducir. Nuestros instructores te darán una breve capacitación antes de iniciar el recorrido para que te familiarices con el manejo del scooter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué incluye el alquiler del scooter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El alquiler incluye: scooter eléctrico de última generación, casco de seguridad, asesoría inicial de manejo, guía de puntos turísticos del Malecón, y acompañamiento durante el recorrido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la duración de los planes de alquiler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ofrecemos tres planes: 30 minutos ($25.000 COP), 40 minutos ($30.000 COP) y 1 hora ($40.000 COP). Todos incluyen los servicios mencionados."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es el horario de atención?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nuestro horario es: Lunes a Viernes de 3:00 PM a 10:00 PM, y Sábados y Domingos de 2:00 PM a 11:00 PM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde están ubicados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Estamos ubicados en el Malecón del Río, específicamente en Vía 40 con calle 79, Barranquilla, Colombia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si llueve durante mi alquiler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En caso de lluvia, podemos reprogramar tu reserva sin costo adicional o ofrecerte un crédito para otra fecha. Tu seguridad es nuestra prioridad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo llevar pasajeros en el scooter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, nuestros scooters son de uso individual. Esto garantiza tu seguridad y la de otros peatones en el Malecón."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la velocidad máxima de los scooters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nuestros scooters alcanzan hasta 25 km/h, una velocidad controlada que te permite disfrutar del recorrido con total seguridad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo puedo hacer una reserva?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puedes reservar directamente aquí en nuestra página web, llamándonos al +57 300 123 4567, o escribiéndonos por WhatsApp. Te recomendamos reservar con anticipación."
+      }
+    }
+  ]
+};
+
+const faqs = [
+  {
+    category: "Reservas",
+    questions: [
+      {
+        question: "¿Cómo puedo hacer una reserva?",
+        answer: "Puedes reservar directamente aquí en nuestra página web, llamándonos al +57 300 123 4567, o escribiéndonos por WhatsApp. Te recomendamos reservar con anticipación, especialmente fines de semana."
+      },
+      {
+        question: "¿Puedo modificar o cancelar mi reserva?",
+        answer: "Sí, puedes modificar o cancelar tu reserva hasta 2 horas antes de la hora programada sin ningún costo. Contáctanos por WhatsApp o teléfono."
+      },
+      {
+        question: "¿Cuánto tiempo dura cada plan de alquiler?",
+        answer: "Ofrecemos tres planes: 30 minutos ($25.000 COP), 40 minutos ($30.000 COP) y 1 hora ($40.000 COP). El tiempo comienza desde que inicias el recorrido."
+      }
+    ]
+  },
+  {
+    category: "Requisitos",
+    questions: [
+      {
+        question: "¿Cuáles son los requisitos para alquilar un scooter?",
+        answer: "Debes ser mayor de 18 años, presentar documento de identidad válido (cédula o pasaporte), y usar casco obligatorio durante todo el recorrido."
+      },
+      {
+        question: "¿Necesito licencia de conducir?",
+        answer: "No necesitas licencia de conducir. Nuestros instructores te darán una breve capacitación antes de iniciar el recorrido para que te familiarices con el manejo del scooter."
+      },
+      {
+        question: "¿Hay límite de edad máximo?",
+        answer: "No hay límite de edad máximo, siempre y cuando te sientas cómodo manejando el scooter. Tenemos clientes de todas las edades disfrutando de la experiencia."
+      }
+    ]
+  },
+  {
+    category: "Seguridad",
+    questions: [
+      {
+        question: "¿Qué incluye el alquiler del scooter?",
+        answer: "El alquiler incluye: scooter eléctrico de última generación, casco de seguridad, asesoría inicial de manejo, guía de puntos turísticos del Malecón, y acompañamiento durante el recorrido."
+      },
+      {
+        question: "¿Cuál es la velocidad máxima de los scooters?",
+        answer: "Nuestros scooters alcanzan hasta 25 km/h, una velocidad controlada que te permite disfrutar del recorrido con total seguridad."
+      },
+      {
+        question: "¿Puedo llevar pasajeros en el scooter?",
+        answer: "No, nuestros scooters son de uso individual. Esto garantiza tu seguridad y la de otros peatones en el Malecón."
+      },
+      {
+        question: "¿Qué pasa si llueve durante mi alquiler?",
+        answer: "En caso de lluvia, podemos reprogramar tu reserva sin costo adicional o ofrecerte un crédito para otra fecha. Tu seguridad es nuestra prioridad."
+      }
+    ]
+  },
+  {
+    category: "Ubicación y Horario",
+    questions: [
+      {
+        question: "¿Dónde están ubicados?",
+        answer: "Estamos ubicados en el Malecón del Río, específicamente en Vía 40 con calle 79, Barranquilla, Colombia."
+      },
+      {
+        question: "¿Cuál es el horario de atención?",
+        answer: "Nuestro horario es: Lunes a Viernes de 3:00 PM a 10:00 PM, y Sábados y Domingos de 2:00 PM a 11:00 PM."
+      },
+      {
+        question: "¿Hay estacionamiento cerca?",
+        answer: "Sí, hay varios parqueaderos cerca del Malecón. También puedes llegar en taxi o aplicativo de transporte."
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Preguntas Frecuentes"
+  description="Resuelve todas tus dudas sobre alquiler de scooters eléctricos en el Malecón de Barranquilla. Requisitos, precios, horarios y más."
+  schemaType="website"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqData)} />
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-24 bg-dark">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-dark to-dark opacity-40"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 bg-[length:40px_40px]"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <Animation animation="fade-down">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+          Preguntas <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Frecuentes</span>
+        </h1>
+      </Animation>
+      <Animation animation="fade-up" delay={200}>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Todo lo que necesitas saber antes de alquilar tu scooter y explorar el Malecón.
+        </p>
+      </Animation>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-dark relative">
+    <div class="container mx-auto px-4">
+      <!-- Search -->
+      <Animation animation="fade-up">
+        <div class="max-w-xl mx-auto mb-12">
+          <div class="relative">
+            <input
+              type="text"
+              id="faq-search"
+              placeholder="Buscar pregunta..."
+              class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all pl-12"
+            />
+            <i class="bx bx-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+          </div>
+        </div>
+      </Animation>
+
+      <!-- FAQ Categories -->
+      <div class="space-y-12" id="faq-container">
+        {faqData.mainEntity.map((faq, index) => (
+          <Animation animation="fade-up" delay={index * 100}>
+            <div class="faq-item group" data-question={faq.name.toLowerCase()}>
+              <button
+                class="w-full flex items-center justify-between p-6 bg-white/5 border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-300 text-left"
+                onclick={`toggleFaq(this)`}
+              >
+                <span class="text-lg font-medium text-white pr-4">{faq.name}</span>
+                <i class="bx bx-chevron-down text-primary text-2xl transition-transform duration-300 group-hover:rotate-180"></i>
+              </button>
+              <div class="hidden mt-4 px-6">
+                <p class="text-gray-300 leading-relaxed">{faq.acceptedAnswer.text}</p>
+              </div>
+            </div>
+          </Animation>
+        ))}
+      </div>
+
+      <!-- Contact CTA -->
+      <Animation animation="fade-up" delay={600}>
+        <div class="mt-16 text-center">
+          <p class="text-gray-400 mb-6">
+            ¿No encontraste la respuesta que buscabas?
+          </p>
+          <a
+            href="/contacto"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all"
+          >
+            <i class="bx bx-message-detail"></i>
+            Contáctanos
+          </a>
+        </div>
+      </Animation>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    
+    if (answer.classList.contains('hidden')) {
+      answer.classList.remove('hidden');
+      icon.classList.add('rotate-180');
+    } else {
+      answer.classList.add('hidden');
+      icon.classList.remove('rotate-180');
+    }
+  }
+
+  // Search functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('faq-search');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    searchInput.addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      faqItems.forEach(item => {
+        const question = item.dataset.question;
+        if (question.includes(searchTerm) || searchTerm === '') {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

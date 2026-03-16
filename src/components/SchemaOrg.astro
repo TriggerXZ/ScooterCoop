@@ -3,20 +3,20 @@
 
 const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "TouristAttraction"],
   "name": "ScooterCoop",
-  "description": "Alquiler de scooters eléctricos y patinetas eléctricas en el Malecón de Barranquilla",
+  "description": "Alquiler de scooters eléctricos y patinetas eléctricas en el Malecón de Barranquilla. Explora la ciudad con estilo, velocidad y sostenibilidad.",
   "url": "https://scootercoop.com",
   "logo": "https://scootercoop.com/logo.png",
-  "image": "https://scootercoop.com/logo.png",
+  "image": "https://scootercoop.com/paisaje.jpg",
   "telephone": "+573001234567",
-  "email": "info@scootercoop.com",
+  "email": "scootercoopinfo@gmail.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Barranquilla",
     "addressRegion": "Atlántico",
     "addressCountry": "CO",
-    "streetAddress": "Malecón del Río Magdalena"
+    "streetAddress": "Malecón del Río, Vía 40 con calle 79"
   },
   "geo": {
     "@type": "GeoCoordinates",
@@ -26,24 +26,33 @@ const websiteSchema = {
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "08:00",
-      "closes": "18:00"
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "15:00",
+      "closes": "22:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "14:00",
+      "closes": "23:00"
     }
   ],
   "priceRange": "$$",
+  "paymentAccepted": ["Efectivo", "Transferencia", "Wompi", "MercadoPago"],
+  "currenciesAccepted": "COP",
   "sameAs": [
     "https://www.instagram.com/scootercoop_/",
-    "https://www.facebook.com/scootercoop"
+    "https://www.facebook.com/scootercoop",
+    "https://wa.me/573001234567"
   ],
-  "keywords": "scooter, scootercoop, patinetas eléctricas, alquiler de scooters, scooters eléctricos, Barranquilla, Malecón"
+  "keywords": "scooter, scootercoop, patinetas eléctricas, alquiler de scooters, scooters eléctricos, Barranquilla, Malecón, Malecón del Río, movilidad eléctrica, tour scooter, rent scooter, electric scooter rental"
 };
 
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Alquiler de Scooters Eléctricos",
-  "description": "Servicio de alquiler de patinetas eléctricas para recorrer el Malecón de Barranquilla",
+  "description": "Servicio de alquiler de patinetas eléctricas para recorrer el Malecón de Barranquilla. Incluye casco, asesoría y guía turística.",
   "brand": {
     "@type": "Brand",
     "name": "ScooterCoop"
@@ -52,7 +61,7 @@ const productSchema = {
     "@type": "AggregateOffer",
     "priceCurrency": "COP",
     "lowPrice": "25000",
-    "highPrice": "35000",
+    "highPrice": "40000",
     "offerCount": "3",
     "availability": "https://schema.org/InStock"
   },
@@ -60,6 +69,34 @@ const productSchema = {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
     "reviewCount": "125"
+  }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Alquiler de Scooters Eléctricos - Malecón",
+  "description": "Alquila scooters eléctricos y recorre el Malecón de Barranquilla con guía incluida. Planes de 30, 40 y 60 minutos.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "ScooterCoop",
+    "url": "https://scootercoop.com"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Malecón del Río, Barranquilla"
+  },
+  "serviceType": "Scooter Rental",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "COP",
+    "price": "25000",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "priceCurrency": "COP",
+      "minPrice": "25000",
+      "maxPrice": "40000"
+    }
   }
 };
 
@@ -72,4 +109,8 @@ const { type = "website" } = Astro.props;
 
 {type === "product" && (
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+)}
+
+{type === "service" && (
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 )}
