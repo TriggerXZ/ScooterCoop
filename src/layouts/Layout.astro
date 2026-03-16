@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SchemaOrg from "../components/SchemaOrg.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 
 export interface Props {
   title: string;
@@ -55,6 +56,42 @@ const canonicalURL = new URL(
     <meta property="twitter:image" content="/logo.png" />
 
     <title>{title} | ScooterCoop - Patinetas Eléctricas en Barranquilla</title>
+    
+    <!-- SEO Local -->
+    <meta name="geo.region" content="CO-ATL" />
+    <meta name="geo.placename" content="Barranquilla" />
+    <meta name="geo.position" content="11.0041;-74.8070" />
+    <meta name="ICBM" content="11.0041, -74.8070" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | ScooterCoop`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:site_name" content="ScooterCoop" />
+    <meta property="og:business:contact_data:street_address" content="Malecón del Río, Vía 40 con calle 79" />
+    <meta property="og:business:contact_data:locality" content="Barranquilla" />
+    <meta property="og:business:contact_data:region" content="Atlántico" />
+    <meta property="og:business:contact_data:country_name" content="Colombia" />
+    <meta property="og:business:contact_data:email" content="scootercoopinfo@gmail.com" />
+    <meta property="og:business:contact_data:phone_number" content="+573001234567" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@scootercoop_" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} | ScooterCoop`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/logo.png" />
+
+    <!-- Canonical alternativo para internacional -->
+    <link rel="alternate" hreflang="es-CO" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={canonicalURL} />
+
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -84,12 +121,6 @@ const canonicalURL = new URL(
         });
       });
     </script>
-
-    <!-- Navbar con efecto de cristal (glassmorphism) -->
-    <header
-      class="fixed top-0 w-full z-50 transition-all duration-300"
-      id="navbar"
-    >
       <div
         class="absolute inset-0 bg-dark/70 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
       >
@@ -139,6 +170,28 @@ const canonicalURL = new URL(
             </li>
             <li>
               <a
+                href="/reservas"
+                class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
+              >
+                Reservas
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/blog"
+                class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
+              >
+                Blog
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
                 href="/galeria"
                 class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
               >
@@ -157,6 +210,25 @@ const canonicalURL = new URL(
                 <span
                   class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
                 ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/faq"
+                class="text-gray-300 font-medium hover:text-primary transition-colors relative group"
+              >
+                FAQ
+                <span
+                  class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"
+                ></span>
+              </a>
+            </li>
+            <li class="ml-4">
+              <a
+                href="/reservas"
+                class="bg-gradient-to-r from-primary to-secondary text-dark px-6 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300 font-bold"
+              >
+                Reservar
               </a>
             </li>
             <li>
@@ -193,6 +265,27 @@ const canonicalURL = new URL(
           </li>
           <li>
             <a
+              href="/reservas"
+              class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
+              >Reservas</a
+            >
+          </li>
+          <li>
+            <a
+              href="/blog"
+              class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="/faq"
+              class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
+              >FAQ</a
+            >
+          </li>
+          <li>
+            <a
               href="/galeria"
               class="block py-2 text-gray-300 hover:text-primary transition-colors border-b border-white/5"
               >Galería</a
@@ -219,6 +312,9 @@ const canonicalURL = new URL(
     <main class="min-h-screen pt-20">
       <slot />
     </main>
+
+    <!-- WhatsApp Floating Button -->
+    <WhatsAppButton />
 
     <footer
       class="bg-dark border-t border-white/10 mt-0 py-16 relative overflow-hidden"
@@ -286,7 +382,40 @@ const canonicalURL = new URL(
             </div>
           </div>
 
-          <div class="md:col-span-1"></div>
+          <div class="md:col-span-1">
+            <h3
+              class="text-lg font-bold mb-6 text-white border-b border-primary/30 inline-block pb-2"
+            >
+              Enlaces
+            </h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="/faq" class="text-gray-400 hover:text-primary transition-colors"
+                  >Preguntas Frecuentes</a
+                >
+              </li>
+              <li>
+                <a href="/servicios" class="text-gray-400 hover:text-primary transition-colors"
+                  >Servicios</a
+                >
+              </li>
+              <li>
+                <a href="/precios" class="text-gray-400 hover:text-primary transition-colors"
+                  >Precios</a
+                >
+              </li>
+              <li>
+                <a href="/galeria" class="text-gray-400 hover:text-primary transition-colors"
+                  >Galería</a
+                >
+              </li>
+              <li>
+                <a href="/ubicacion" class="text-gray-400 hover:text-primary transition-colors"
+                  >Ubicación</a
+                >
+              </li>
+            </ul>
+          </div>
 
           <div>
             <h3
@@ -582,6 +711,85 @@ const canonicalURL = new URL(
           "close-privacy",
           "privacy-overlay",
         );
+      });
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <!-- Reemplaza G-XXXXXXXXXX con tu ID de GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <!-- Reemplaza TuClarityProjectId con tu ID de Clarity -->
+    <script is:inline>
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window,document,"clarity","script","TuClarityProjectId");
+    </script>
+
+    <!-- Event Tracking Script -->
+    <script is:inline>
+      // Track clicks on reservation buttons
+      document.addEventListener('DOMContentLoaded', function() {
+        const trackEvent = (category, action, label) => {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', action, {
+              event_category: category,
+              event_label: label
+            });
+          }
+        };
+
+        // Track all "Reservar" buttons
+        document.querySelectorAll('a[href*="contacto"], a[href*="reservar"]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            trackEvent('conversion', 'click_reservar', window.location.pathname);
+          });
+        });
+
+        // Track phone clicks
+        document.querySelectorAll('a[href^="tel:"]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            trackEvent('contact', 'click_phone', 'footer');
+          });
+        });
+
+        // Track WhatsApp clicks
+        document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            trackEvent('contact', 'click_whatsapp', 'footer');
+          });
+        });
+
+        // Track scroll depth
+        let scroll25 = false, scroll50 = false, scroll75 = false, scroll100 = false;
+        window.addEventListener('scroll', () => {
+          const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+          
+          if (scrollPercent >= 25 && !scroll25) {
+            scroll25 = true;
+            trackEvent('engagement', 'scroll_25', window.location.pathname);
+          }
+          if (scrollPercent >= 50 && !scroll50) {
+            scroll50 = true;
+            trackEvent('engagement', 'scroll_50', window.location.pathname);
+          }
+          if (scrollPercent >= 75 && !scroll75) {
+            scroll75 = true;
+            trackEvent('engagement', 'scroll_75', window.location.pathname);
+          }
+          if (scrollPercent >= 100 && !scroll100) {
+            scroll100 = true;
+            trackEvent('engagement', 'scroll_100', window.location.pathname);
+          }
+        });
       });
     </script>
   </body>

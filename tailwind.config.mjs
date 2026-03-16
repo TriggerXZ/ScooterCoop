@@ -4,15 +4,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#00f0ff', // Electric Blue
-        secondary: '#7000ff', // Neon Purple
-        accent: '#ff0099', // Hot Pink
-        dark: '#0a0a0a', // Deep Dark
-        'light-blue': '#e0f7fa', // Keep for legacy compatibility if needed, or replace
-        'dark-blue': '#050510', // Very dark blue
-        gray: {
-          950: '#0a0a0a',
-        }
+        'primary': '#00f0ff',
+        'secondary': '#7000ff',
+        'accent': '#ff0099',
+        'light-blue': '#00f0ff',
+        'dark-blue': '#0f172a',
+        'white': '#ffffff',
+        'gray': {
+        '100': '#f3f4f6',
+        '200': '#e5e7eb',
+        '300': '#d1d5db',
+        '400': '#9ca3af',
+        '500': '#6b7280',
+        '600': '#4b5563',
+        '700': '#374151',
+        '800': '#1f2937',
+        '900': '#111827'
+      },
+        'green': {
+        '500': '#10b981'
+      },
+        'yellow': {
+        '400': '#facc15'
+      }
       },
       boxShadow: {
         'soft': '0 8px 30px rgba(0, 0, 0, 0.05)',
