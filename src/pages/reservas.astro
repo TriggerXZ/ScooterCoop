@@ -1,0 +1,390 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Animation from "../components/Animation.astro";
+
+const plans = [
+  {
+    id: "30min",
+    name: "30 Minutos",
+    price: 25000,
+    duration: "30 min",
+    features: ["Casco incluido", "Asesoría inicial", "Guía turística", "Acompañamiento"]
+  },
+  {
+    id: "40min",
+    name: "40 Minutos",
+    price: 30000,
+    duration: "40 min",
+    features: ["Casco incluido", "Asesoría inicial", "Guía turística", "Acompañamiento"],
+    popular: true
+  },
+  {
+    id: "60min",
+    name: "1 Hora",
+    price: 40000,
+    duration: "60 min",
+    features: ["Casco incluido", "Asesoría inicial", "Guía turística", "Acompañamiento"]
+  }
+];
+
+const bookingSchema = {
+  "@context": "https://schema.org",
+  "@type": "ReservationService",
+  "name": "Reservas ScooterCoop",
+  "description": "Reserva tu scooter eléctrico para explorar el Malecón de Barranquilla",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "ScooterCoop",
+    "url": "https://scootercoop.com"
+  },
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://scootercoop.com/reservas"
+    }
+  }
+};
+---
+
+<Layout
+  title="Reservas"
+  description="Reserva tu scooter eléctrico en el Malecón de Barranquilla. Planes de 30, 40 minutos y 1 hora."
+  schemaType="website"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(bookingSchema)} />
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-24 bg-dark">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-dark to-dark opacity-40"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 bg-[length:40px_40px]"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <Animation animation="fade-down">
+        <span class="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-4">
+          📅 Reserva Fácil y Rápido
+        </span>
+      </Animation>
+      <Animation animation="fade-up" delay={200}>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+          Reserva tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Scooter</span>
+        </h1>
+      </Animation>
+      <Animation animation="fade-up" delay={400}>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Elige tu plan, selecciona fecha y hora, y prepárate para explorar el Malecón.
+        </p>
+      </Animation>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section class="py-16 bg-dark relative">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Plans Selection -->
+        <div class="lg:col-span-2">
+          <Animation animation="fade-right">
+            <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10">
+              <h2 class="text-2xl font-bold text-white mb-6">Selecciona tu Plan</h2>
+              
+              <!-- Plan Cards -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                {plans.map((plan, index) => (
+                  <label class={`relative cursor-pointer`}>
+                    <input type="radio" name="plan" value={plan.id} class="peer sr-only" data-price={plan.price} data-duration={plan.duration} />
+                    <div class={`p-6 rounded-2xl border transition-all duration-300 peer-checked:border-primary peer-checked:bg-primary/10 ${plan.popular ? 'border-secondary bg-secondary/5' : 'border-white/10 bg-white/5 hover:border-white/30'}`}>
+                      {plan.popular && (
+                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-to-r from-secondary to-accent text-white text-xs font-bold rounded-full">
+                          Popular
+                        </span>
+                      )}
+                      <h3 class="text-lg font-bold text-white mb-2">{plan.name}</h3>
+                      <p class="text-2xl font-bold text-primary mb-4">${plan.price.toLocaleString('es-CO')}</p>
+                      <ul class="space-y-2 text-sm text-gray-400">
+                        {plan.features.map(feature => (
+                          <li class="flex items-center gap-2">
+                            <i class="bx bx-check text-primary"></i>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </label>
+                ))}
+              </div>
+
+              <!-- Date & Time Selection -->
+              <h3 class="text-xl font-bold text-white mb-4">Selecciona Fecha y Hora</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <label class="block text-gray-400 mb-2 text-sm">Fecha</label>
+                  <input
+                    type="date"
+                    id="booking-date"
+                    name="date"
+                    class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    min={new Date().toISOString().split('T')[0]}
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-400 mb-2 text-sm">Hora</label>
+                  <select
+                    id="booking-time"
+                    name="time"
+                    class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none"
+                    required
+                  >
+                    <option value="">Selecciona una hora</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="15:30">3:30 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="16:30">4:30 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                    <option value="17:30">5:30 PM</option>
+                    <option value="18:00">6:00 PM</option>
+                    <option value="18:30">6:30 PM</option>
+                    <option value="19:00">7:00 PM</option>
+                    <option value="19:30">7:30 PM</option>
+                    <option value="20:00">8:00 PM</option>
+                    <option value="20:30">8:30 PM</option>
+                    <option value="21:00">9:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Quantity -->
+              <h3 class="text-xl font-bold text-white mb-4">Número de Scooters</h3>
+              <div class="mb-8">
+                <label class="block text-gray-400 mb-2 text-sm">Cantidad de personas</label>
+                <div class="flex items-center gap-4">
+                  <button type="button" onclick="decrementQty()" class="w-12 h-12 rounded-xl bg-white/10 text-white hover:bg-primary hover:text-dark transition-all flex items-center justify-center text-xl font-bold">-</button>
+                  <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" class="w-20 px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white text-center font-bold focus:outline-none focus:border-primary" readonly />
+                  <button type="button" onclick="incrementQty()" class="w-12 h-12 rounded-xl bg-white/10 text-white hover:bg-primary hover:text-dark transition-all flex items-center justify-center text-xl font-bold">+</button>
+                </div>
+              </div>
+
+              <!-- Contact Info -->
+              <h3 class="text-xl font-bold text-white mb-4">Datos de Contacto</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <label class="block text-gray-400 mb-2 text-sm">Nombre *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    required
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-400 mb-2 text-sm">Teléfono *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    placeholder="+57 300 000 0000"
+                    required
+                  />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-gray-400 mb-2 text-sm">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  />
+                </div>
+              </div>
+
+              <!-- Notes -->
+              <div class="mb-8">
+                <label class="block text-gray-400 mb-2 text-sm">Notas adicionales</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="3"
+                  class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  placeholder="¿Alguna restricción o necesidad especial?"
+                ></textarea>
+              </div>
+            </div>
+          </Animation>
+        </div>
+
+        <!-- Summary -->
+        <div class="lg:col-span-1">
+          <Animation animation="fade-left" delay={200}>
+            <div class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 sticky top-24">
+              <h2 class="text-2xl font-bold text-white mb-6">Resumen de Reserva</h2>
+              
+              <div class="space-y-4 mb-6">
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Plan:</span>
+                  <span id="summary-plan" class="text-white font-medium">No seleccionado</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Fecha:</span>
+                  <span id="summary-date" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Hora:</span>
+                  <span id="summary-time" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Personas:</span>
+                  <span id="summary-qty" class="text-white font-medium">1</span>
+                </div>
+                <div class="border-t border-white/10 pt-4 flex justify-between">
+                  <span class="text-gray-400">Precio por persona:</span>
+                  <span id="summary-price-unit" class="text-white">$0</span>
+                </div>
+                <div class="border-t border-white/10 pt-4 flex justify-between">
+                  <span class="text-white font-bold">Total:</span>
+                  <span id="summary-total" class="text-2xl font-bold text-primary">$0</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onclick="submitBooking()"
+                class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-6 rounded-xl hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2"
+              >
+                <i class="bx bxl-whatsapp"></i>
+                Reservar por WhatsApp
+              </button>
+
+              <p class="text-gray-500 text-xs text-center mt-4">
+                Al reservar, recibirás una confirmación por WhatsApp
+              </p>
+            </div>
+          </Animation>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="py-16 bg-dark border-t border-white/5">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+            <i class="bx bx-map-pin text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Ubicación</h3>
+          <p class="text-gray-400">Malecón del Río, Vía 40 con calle 79, Barranquilla</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+            <i class="bx bx-time text-secondary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Horario</h3>
+          <p class="text-gray-400">Lun-Vie: 3PM-10PM<br/>Sáb-Dom: 2PM-11PM</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
+            <i class="bx bx-phone text-accent text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Contacto</h3>
+          <p class="text-gray-400">+57 300 123 4567<br/>scootercoopinfo@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  const plans = {
+    '30min': { name: '30 Minutos', price: 25000 },
+    '40min': { name: '40 Minutos', price: 30000 },
+    '60min': { name: '1 Hora', price: 40000 }
+  };
+
+  let selectedPlan = null;
+  let currentPrice = 0;
+  let currentDuration = '';
+
+  // Plan selection
+  document.querySelectorAll('input[name="plan"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      selectedPlan = this.value;
+      currentPrice = parseInt(this.dataset.price);
+      currentDuration = this.dataset.duration;
+      updateSummary();
+    });
+  });
+
+  // Date/Time selection
+  document.getElementById('booking-date').addEventListener('change', updateSummary);
+  document.getElementById('booking-time').addEventListener('change', updateSummary);
+
+  function updateSummary() {
+    const date = document.getElementById('booking-date').value;
+    const time = document.getElementById('booking-time').value;
+    const qty = parseInt(document.getElementById('quantity').value) || 1;
+
+    document.getElementById('summary-plan').textContent = selectedPlan ? plans[selectedPlan].name : 'No seleccionado';
+    document.getElementById('summary-date').textContent = date ? new Date(date).toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' }) : '-';
+    document.getElementById('summary-time').textContent = time ? formatTime(time) : '-';
+    document.getElementById('summary-qty').textContent = qty;
+    document.getElementById('summary-price-unit').textContent = currentPrice ? `$${currentPrice.toLocaleString('es-CO')} COP` : '$0';
+    document.getElementById('summary-total').textContent = currentPrice ? `$${(currentPrice * qty).toLocaleString('es-CO')} COP` : '$0';
+  }
+
+  function formatTime(time) {
+    const [hours, minutes] = time.split(':');
+    const hour = parseInt(hours);
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minutes} ${ampm}`;
+  }
+
+  function incrementQty() {
+    const input = document.getElementById('quantity');
+    if (parseInt(input.value) < 10) {
+      input.value = parseInt(input.value) + 1;
+      updateSummary();
+    }
+  }
+
+  function decrementQty() {
+    const input = document.getElementById('quantity');
+    if (parseInt(input.value) > 1) {
+      input.value = parseInt(input.value) - 1;
+      updateSummary();
+    }
+  }
+
+  function submitBooking() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const date = document.getElementById('booking-date').value;
+    const time = document.getElementById('booking-time').value;
+    const qty = document.getElementById('quantity').value;
+
+    if (!selectedPlan || !name || !phone || !date || !time) {
+      alert('Por favor completa todos los campos requeridos');
+      return;
+    }
+
+    const planName = plans[selectedPlan].name;
+    const total = (plans[selectedPlan].price * parseInt(qty)).toLocaleString('es-CO');
+    const formattedDate = new Date(date).toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const formattedTime = formatTime(time);
+
+    const message = `*Nueva Reserva - ScooterCoop*%0A%0A*Nombre:* ${name}%0A*Teléfono:* ${phone}%0A*Plan:* ${planName}%0A*Fecha:* ${formattedDate}%0A*Hora:* ${formattedTime}%0A*Personas:* ${qty}%0A*Total:* $${total} COP`;
+
+    const whatsappUrl = `https://wa.me/573001234567?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  }
+</script>

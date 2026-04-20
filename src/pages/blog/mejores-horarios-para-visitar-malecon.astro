@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const post = {
+  title: "Los mejores horarios para visitar el Malecón",
+  excerpt: "Te contamos cuál es el mejor momento del día para recorrer el Malecón en scooter y aprovechar al máximo tu experiencia.",
+  image: "/atardecer.jpg",
+  date: "2026-03-05",
+  category: "Consejos",
+  author: "ScooterCoop Team"
+};
+---
+
+<Layout
+  title={post.title}
+  description={post.excerpt}
+  schemaType="website"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden py-24 bg-dark">
+    <div class="absolute inset-0">
+      <img src={post.image} alt={post.title} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors mb-8">
+        <i class="bx bx-arrow-back"></i>
+        Volver al Blog
+      </a>
+      
+      <span class="inline-block px-4 py-1 bg-secondary/20 text-secondary text-sm font-bold rounded-full mb-4">
+        {post.category}
+      </span>
+      
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 max-w-4xl">
+        {post.title}
+      </h1>
+      
+      <div class="flex items-center gap-6 text-gray-400">
+        <span class="flex items-center gap-2">
+          <i class="bx bx-calendar"></i>
+          {new Date(post.date).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </span>
+        <span class="flex items-center gap-2">
+          <i class="bx bx-user"></i>
+          {post.author}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 bg-dark">
+    <div class="container mx-auto px-4">
+      <article class="max-w-3xl mx-auto prose prose-invert prose-lg">
+        <p class="text-xl text-gray-300 lead">
+          El Malecón del Río es un lugar que cambia completamente dependiendo de la hora del día. 
+          Te contamos cuándo es mejor visitarlo según lo que buscas.
+        </p>
+
+        <h2>🌅 El Atardecer (5:00 PM - 7:00 PM)</h2>
+        <p>
+          Sin duda, el horario más mágico para recorrer el Malecón. El cielo se tiñe de colores naranjas, 
+          rosados y morados, creando un espectáculo visual increíble. Es el momento perfecto para:
+        </p>
+        <ul>
+          <li>Tomar fotos panorámicas</li>
+          <li>Disfrutar de la brisa del río</li>
+          <li>Ver la ciudad iluminarse gradualmente</li>
+        </ul>
+
+        <h2>🌙 La Noche (7:00 PM - 10:00 PM)</h2>
+        <p>
+          El Malecón cobra vida con las luces de la ciudad. Los restaurantes y kioskos están activos, 
+          y hay un ambiente vibrante. Ideal para:
+        </p>
+        <ul>
+          <li>Experimentar la vida nocturna local</li>
+          <li>Probar la gastronomía costeña</li>
+          <li>Disfrutar de música en vivo en algunos puntos</li>
+        </ul>
+
+        <h2>☀️ Temprano en la Mañana</h2>
+        <p>
+          Si prefieres evitar el calor y las multitudes, las mañanas tempranas (6:00 AM - 8:00 AM) 
+          ofrecen una experiencia más tranquila y fresca.
+        </p>
+
+        <div class="bg-white/5 border border-primary/30 rounded-2xl p-6 my-8">
+          <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+            <i class="bx bx-bolt text-primary"></i>
+            Horarios de ScooterCoop
+          </h3>
+          <p class="text-gray-300 mb-4">
+            Nuestro horario de atención es:<br/>
+            <strong>Lunes a Viernes:</strong> 3:00 PM - 10:00 PM<br/>
+            <strong>Sábados y Domingos:</strong> 2:00 PM - 11:00 PM
+          </p>
+        </div>
+
+        <h2>📅 Días Recomendados</h2>
+        <p>
+          <strong>Entre semana:</strong> Menos gente, más tranquilo, ideal para fotos.<br/>
+          <strong>Fines de semana:</strong> Más ambiente y actividades, pero más concurrido.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>

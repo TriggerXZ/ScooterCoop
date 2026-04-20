@@ -1,0 +1,179 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const post = {
+  title: "Qué ver en el Malecón de Barranquilla en scooter",
+  excerpt: "Descubre los puntos turísticos más icónicos del Malecón del Río navigando en scooter eléctrico.",
+  image: "/paisaje.jpg",
+  date: "2026-03-10",
+  category: "Rutas Turísticas",
+  author: "ScooterCoop Team"
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title,
+  "description": post.excerpt,
+  "image": "https://scootercoop.com" + post.image,
+  "datePublished": post.date,
+  "author": {
+    "@type": "Organization",
+    "name": "ScooterCoop"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ScooterCoop",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://scootercoop.com/logo.png"
+    }
+  }
+};
+---
+
+<Layout
+  title={post.title}
+  description={post.excerpt}
+  schemaType="website"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden py-24 bg-dark">
+    <div class="absolute inset-0">
+      <img src={post.image} alt={post.title} class="w-full h-full object-cover opacity-30" />
+      <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/80 to-dark"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <a href="/blog" class="inline-flex items-center gap-2 text-primary hover:text-white transition-colors mb-8">
+        <i class="bx bx-arrow-back"></i>
+        Volver al Blog
+      </a>
+      
+      <span class="inline-block px-4 py-1 bg-secondary/20 text-secondary text-sm font-bold rounded-full mb-4">
+        {post.category}
+      </span>
+      
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 max-w-4xl">
+        {post.title}
+      </h1>
+      
+      <div class="flex items-center gap-6 text-gray-400">
+        <span class="flex items-center gap-2">
+          <i class="bx bx-calendar"></i>
+          {new Date(post.date).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </span>
+        <span class="flex items-center gap-2">
+          <i class="bx bx-user"></i>
+          {post.author}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 bg-dark">
+    <div class="container mx-auto px-4">
+      <article class="max-w-3xl mx-auto prose prose-invert prose-lg">
+        <p class="text-xl text-gray-300 lead">
+          El Malecón del Río de Barranquilla es uno de los espacios públicos más emblemáticos de la ciudad. 
+          Con más de 5 kilómetros de extensión, ofrece una experiencia única para explorar en scooter eléctrico.
+        </p>
+
+        <h2>🗺️ Puntos Imperdibles del Malecón</h2>
+        
+        <h3>1. Monumento a la Reina del Río</h3>
+        <p>
+          Este icónico monumento da la bienvenida a visitantes y representa la conexión de Barranquilla 
+          con el río Magdalena. Es el punto perfecto para comenzar tu recorrido y tomar fotos memorables.
+        </p>
+
+        <h3>2. Plaza de la Memoria</h3>
+        <p>
+          Un espacio de reflexión y memoria histórica que combina arte y naturaleza. 
+          El área cuenta con zonas verdes ideales para descansar entre recorridos.
+        </p>
+
+        <h3>3. Torre del Reloj</h3>
+        <p>
+          Uno de los símbolos más reconocidos de Barranquilla. El área circundante tiene restaurantes, 
+          cafés y tiendas donde puedes hacer una parada durante tu tour.
+        </p>
+
+        <h3>4. Puerto de la традиція</h3>
+        <p>
+          Desde aquí puedes apreciar la actividad portuaria y los botes que navegan el río. 
+          Es especialmente hermoso durante el atardecer.
+        </p>
+
+        <h2>🚴‍♂️ Nuestra Ruta Recomendada</h2>
+        <p>
+          Te sugerimos comenzar desde la zona de Vía 40 y avanzar hacia el sur del Malecón. 
+          En aproximadamente 30-40 minutos puedes recorrer los puntos principales con paradas para fotos.
+        </p>
+
+        <ul>
+          <li><strong>Inicio:</strong> ScooterCoop - Vía 40 con calle 79</li>
+          <li><strong>Parada 1:</strong> Monumento a la Reina del Río</li>
+          <li><strong>Parada 2:</strong> Plaza de la Memoria</li>
+          <li><strong>Parada 3:</strong> Torre del Reloj</li>
+          <li><strong>Parada 4:</strong> Puerto de la tradición</li>
+        </ul>
+
+        <h2>🌅 Mejor Hora para Visitar</h2>
+        <p>
+          Te recomendamos visitar entre las 4:00 PM y 7:00 PM. Puedes comenzar tu recorrido 
+          en la tarde, disfrutar del atardecer sobre el río y terminar con la ciudad iluminada.
+        </p>
+
+        <div class="bg-white/5 border border-primary/30 rounded-2xl p-6 my-8">
+          <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+            <i class="bx bx-bolt text-primary"></i>
+            Reserva tu Tour en Scooter
+          </h3>
+          <p class="text-gray-300 mb-4">
+            Vive la experiencia de explorar el Malecón en scooter eléctrico. 
+            Incluye casco, asesoría y guía de puntos turísticos.
+          </p>
+          <a
+            href="/contacto"
+            class="inline-block px-6 py-3 bg-primary text-dark font-bold rounded-full hover:bg-white transition-colors"
+          >
+            Reservar Ahora
+          </a>
+        </div>
+
+        <h2>📝 Consejos para tu Visita</h2>
+        <ol>
+          <li><strong>Llegar temprano:</strong> Especially en weekends, los horarios prime se llenan rápido</li>
+          <li><strong>Usar protector solar:</strong> El sol de Barranquilla es fuerte</li>
+          <li><strong>Llevar agua:</strong> Mantente hidratado durante el recorrido</li>
+          <li><strong>Capturar el momento:</strong> No olvides tu cámara para el atardecer</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <!-- Related Posts -->
+  <section class="py-16 bg-dark border-t border-white/5">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold text-white mb-8">Otros Artículos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/blog/mejores-horarios-para-visitar-malecon" class="block bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-secondary/50 transition-all">
+          <h3 class="font-bold text-white mb-2">Los mejores horarios para visitar</h3>
+          <p class="text-gray-400 text-sm">Descubre cuándo es mejor explorar el Malecón</p>
+        </a>
+        <a href="/blog/beneficios-scooter-electrico" class="block bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-secondary/50 transition-all">
+          <h3 class="font-bold text-white mb-2">Beneficios del scooter eléctrico</h3>
+          <p class="text-gray-400 text-sm">Por qué elegir esta movilidad sostenible</p>
+        </a>
+        <a href="/blog/historia-malecon-rio-barranquilla" class="block bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-secondary/50 transition-all">
+          <h3 class="font-bold text-white mb-2">Historia del Malecón</h3>
+          <p class="text-gray-400 text-sm">Un recorrido por la transformación del icónico malecón</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

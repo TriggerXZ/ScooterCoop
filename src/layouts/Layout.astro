@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import SchemaOrg from "../components/SchemaOrg.astro";
 import MemphisNav from "../components/MemphisNav.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 
 export interface Props {
   title: string;
@@ -46,6 +47,23 @@ const currentPath = Astro.url.pathname;
   <meta property="twitter:image" content="/logo.png" />
   <title>{title} | ScooterCoop - Scooters en el Malecón</title>
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+
+  <!-- SEO Local -->
+  <meta name="geo.region" content="CO-ATL" />
+  <meta name="geo.placename" content="Barranquilla" />
+  <meta name="geo.position" content="11.0041;-74.8070" />
+  <meta name="ICBM" content="11.0041, -74.8070" />
+
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:site_name" content="ScooterCoop" />
+  <meta property="og:business:contact_data:street_address" content="Malecón del Río, Vía 40 con calle 79" />
+  <meta property="og:business:contact_data:locality" content="Barranquilla" />
+  <meta property="og:business:contact_data:region" content="Atlántico" />
+  <meta property="og:business:contact_data:country_name" content="Colombia" />
+  <meta property="og:business:contact_data:email" content="scootercoopinfo@gmail.com" />
+  <meta property="og:business:contact_data:phone_number" content="+573001234567" />
+
+  <meta property="twitter:site" content="@scootercoop_" />
 </head>
 <body class="site-body">
   <!-- Navigation -->
@@ -145,7 +163,8 @@ const currentPath = Astro.url.pathname;
         <p class="copyright">&copy; {new Date().getFullYear()} ScooterCoop. Todos los derechos reservados.</p>
       </div>
     </div>
-</footer>
+  </footer>
+  <WhatsAppButton />
 </body>
 </html>
 
