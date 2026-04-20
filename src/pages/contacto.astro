@@ -57,7 +57,7 @@ import MemphisButton from "../components/MemphisButton.astro";
 
             <div class="form-group-memphis">
               <label class="form-label-memphis">TIPO DE SERVICIO</label>
-              <select id="servicio" name="servicio" class="memphis-select" onchange="calcularTotal()">
+              <select id="servicio" name="servicio" class="memphis-select">
                 <option value="">Selecciona un servicio</option>
                 <option value="30min" data-price="25000">Alquiler 30 minutos</option>
                 <option value="40min" data-price="30000">Alquiler 40 minutos</option>
@@ -70,7 +70,7 @@ import MemphisButton from "../components/MemphisButton.astro";
 
             <div class="form-group-memphis">
               <label class="form-label-memphis">CANTIDAD DE SCOOTERS</label>
-              <input type="number" id="cantidad" name="cantidad" min="1" value="1" class="memphis-input" onchange="calcularTotal()" oninput="calcularTotal()" />
+              <input type="number" id="cantidad" name="cantidad" min="1" value="1" class="memphis-input" />
             </div>
 
             <!-- Total Calculator -->
@@ -187,10 +187,21 @@ import MemphisButton from "../components/MemphisButton.astro";
       const total = precioUnitario * cantidad;
 
       precioUnitarioEl.textContent = precioUnitario > 0 ? '$' + precioUnitario.toLocaleString() : '$0';
-      cantidadDisplay.textContent = cantidad.toString();
+      cantidadDisplay.textContent = Math.max(1, cantidad).toString();
       totalPrecio.textContent = '$' + total.toLocaleString() + ' COP';
     }
 
+    // Add event listeners
+    const select = document.getElementById('servicio');
+    const cantidadInput = document.getElementById('cantidad');
+
+    if (select) select.addEventListener('change', calcularTotal);
+    if (cantidadInput) {
+      cantidadInput.addEventListener('change', calcularTotal);
+      cantidadInput.addEventListener('input', calcularTotal);
+    }
+
+    // Initial calculation
     calcularTotal();
   </script>
 </Layout>
