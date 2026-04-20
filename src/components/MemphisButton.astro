@@ -1,0 +1,80 @@
+---
+interface Props {
+  href?: string;
+  variant?: "primary" | "secondary" | "outline" | "accent" | "lime";
+  size?: "sm" | "md" | "lg";
+  class?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  [key: string]: any;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  class: className = "",
+  type = "button",
+  disabled = false,
+  ...rest
+} = Astro.props;
+
+const sizeClasses = {
+  sm: "px-4 py-2 text-sm",
+  md: "px-6 py-3 text-base",
+  lg: "px-8 py-4 text-lg",
+};
+
+const variantClasses = {
+  primary: "bg-yellow border-brown text-black hover:shadow-memphis-pink",
+  secondary: "bg-white border-pink text-text hover:shadow-memphis-pink",
+  outline: "bg-transparent border-text text-text border-dashed hover:bg-text hover:text-white",
+  accent: "bg-pink border-white text-white hover:shadow-memphis",
+  lime: "bg-lime border-dark text-black hover:shadow-memphis",
+};
+
+const currentVariant = variantClasses[variant];
+const currentSize = sizeClasses[size];
+
+const baseClasses = "memphis-btn font-subheading font-bold transition-all duration-200 relative inline-flex items-center justify-center gap-2 cursor-pointer";
+const classes = `${baseClasses} ${currentSize} ${currentVariant} border-4 border-solid ${className}`;
+---
+
+{href ? (
+  <a
+    href={href}
+    class:list={[
+      classes,
+      disabled && "opacity-50 cursor-not-allowed pointer-events-none"
+    ]}
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    type={type}
+    disabled={disabled}
+    class:list={[
+      classes,
+      disabled && "opacity-50 cursor-not-allowed"
+    ]}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}
+
+<style>
+.memphis-btn {
+  border-radius: 0 !important;
+}
+
+.memphis-btn:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+.memphis-btn:active {
+  transform: scale(0.98) translateY(2px);
+}
+</style>

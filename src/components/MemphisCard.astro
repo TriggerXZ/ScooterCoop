@@ -1,0 +1,154 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
+  variant?: "pink" | "yellow" | "blue" | "lime" | "coral";
+  hoverEffect?: boolean;
+}
+
+const {
+  variant = "pink",
+  hoverEffect = true,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const borderColors = {
+  pink: "border-pink",
+  yellow: "border-yellow",
+  blue: "border-blue",
+  lime: "border-lime",
+  coral: "border-coral",
+};
+
+const shadowColors = {
+  pink: "shadow-memphis-pink",
+  yellow: "shadow-memphis-yellow",
+  blue: "shadow-memphis-blue",
+  lime: "shadow-memphis",
+  coral: "shadow-memphis",
+};
+
+const currentBorder = borderColors[variant];
+const currentShadow = shadowColors[variant];
+---
+
+<div
+  class:list={[
+    "memphis-card",
+    "border-4",
+    "border-solid",
+    currentBorder,
+    hoverEffect && "hover:translate-y-2",
+    hoverEffect && currentShadow,
+    "p-6",
+    "relative",
+    "overflow-hidden",
+    className,
+  ]}
+  style="background-color: var(--color-white);"
+  {...rest}
+>
+  <!-- Decorative corner shapes -->
+  <div class={`card-deco card-deco-${variant}`}></div>
+
+  <!-- Optional decorative squiggle -->
+  <div class="card-squiggle"></div>
+
+  <!-- Content -->
+  <div class="relative z-10">
+    <slot />
+  </div>
+</div>
+
+<style>
+.memphis-card {
+  border-radius: 0 !important;
+  box-shadow: 8px 8px 0px var(--shadow-color);
+  transition: all 0.3s ease;
+  background-color: var(--color-white);
+}
+
+.memphis-card:hover {
+  transform: translateY(-4px) rotate(1deg);
+  box-shadow: 12px 12px 0px var(--shadow-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .memphis-card {
+    box-shadow: 8px 8px 0px var(--shadow-color);
+  }
+
+  .memphis-card:hover {
+    box-shadow: 12px 12px 0px var(--shadow-color);
+  }
+}
+
+.card-deco {
+  position: absolute;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card-deco-pink {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  background-color: #FF6B9D;
+  top: -8px;
+  right: -8px;
+  opacity: 0.15;
+}
+
+.card-deco-yellow {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background-color: #FFE135;
+  bottom: -6px;
+  left: -6px;
+  opacity: 0.2;
+}
+
+.card-deco-blue {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: #00ADEE;
+  top: 10px;
+  left: -4px;
+  opacity: 0.15;
+}
+
+.card-deco-lime {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: #39FF14;
+  bottom: 10px;
+  right: -5px;
+  opacity: 0.15;
+}
+
+.card-deco-coral {
+  width: 3.5rem;
+  height: 3.5rem;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: #FF6B35;
+  top: -7px;
+  right: 20px;
+  opacity: 0.2;
+}
+
+.card-squiggle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q 12.5 0, 25 10 T 50 10 T 75 10 T 100 10' stroke='%23FFE135' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 100px 20px;
+  opacity: 0.2;
+}
+</style>

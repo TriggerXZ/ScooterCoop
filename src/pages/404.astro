@@ -1,70 +1,230 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import MemphisButton from "../components/MemphisButton.astro";
 ---
 
 <Layout title="Página no encontrada">
-    <main
-        class="min-h-screen flex items-center justify-center relative overflow-hidden"
-    >
-        <!-- Background Elements -->
-        <div class="absolute inset-0 bg-dark z-0"></div>
-        <div
-            class="absolute top-0 left-0 w-full h-full bg-[url('/grid-pattern.svg')] opacity-20 z-0"
-        >
+<main class="min-h-screen flex items-center justify-center relative overflow-hidden bg-cream">
+  <!-- Background decorations -->
+  <div class="error-deco error-deco-1"></div>
+  <div class="error-deco error-deco-2"></div>
+  <div class="error-deco error-deco-3"></div>
+  <div class="error-pattern"></div>
+
+  <div class="container mx-auto px-4 relative z-10 text-center">
+    <div class="mb-8 relative inline-block">
+      <h1 class="error-number-memphis">404</h1>
+      <div class="error-icon-wrapper">
+        <div class="error-icon-memphis">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="error-icon-svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
         </div>
-        <div
-            class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow"
-        >
-        </div>
-        <div
-            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] animate-pulse-slow delay-1000"
-        >
-        </div>
+      </div>
+    </div>
 
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <div class="mb-8 relative inline-block">
-                <h1
-                    class="text-[150px] md:text-[200px] font-display font-bold leading-none text-transparent bg-clip-text bg-gradient-to-b from-white/10 to-transparent select-none"
-                >
-                    404
-                </h1>
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <i
-                        class="bx bx-error-circle text-6xl md:text-8xl text-primary animate-bounce"
-                    ></i>
-                </div>
-            </div>
+    <h2 class="error-title-memphis">
+      ¿Te perdiste en el <span class="text-pink">Malecón</span>?
+    </h2>
 
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
-                ¿Te perdiste en el <span class="text-primary">Malecón</span>?
-            </h2>
+    <p class="error-desc-memphis max-w-2xl mx-auto">
+      Parece que la ruta que buscas no existe o ha sido movida. No te preocupes, siempre puedes volver a la estación principal.
+    </p>
 
-            <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                Parece que la ruta que buscas no existe o ha sido movida. No te
-                preocupes, siempre puedes volver a la estación principal.
-            </p>
-
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a
-                    href="/"
-                    class="group relative px-8 py-4 bg-primary text-dark font-bold rounded-xl overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,240,255,0.5)]"
-                >
-                    <span class="relative z-10 flex items-center gap-2">
-                        <i class="bx bx-home"></i> Volver al Inicio
-                    </span>
-                    <div
-                        class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
-                    >
-                    </div>
-                </a>
-
-                <a
-                    href="/contacto"
-                    class="group px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 hover:border-white/30 transition-all hover:scale-105 backdrop-blur-sm flex items-center justify-center gap-2"
-                >
-                    <i class="bx bx-support"></i> Contactar Soporte
-                </a>
-            </div>
-        </div>
-    </main>
+    <div class="error-buttons-memphis flex flex-col md:flex-row gap-4 justify-center mt-10">
+      <MemphisButton href="/" variant="primary" size="lg">
+        <i class="bx bx-home"></i>
+        Volver al Inicio
+      </MemphisButton>
+      <MemphisButton href="/contacto" variant="secondary" size="lg">
+        <i class="bx bx-support"></i>
+        Contactar Soporte
+      </MemphisButton>
+    </div>
+  </div>
+</main>
 </Layout>
+
+<style>
+.error-deco {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+}
+
+.error-deco-1 {
+  width: 24rem;
+  height: 24rem;
+  top: -20%;
+  left: -10%;
+  background-color: #FFE135;
+  opacity: 0.15;
+}
+
+.error-deco-2 {
+  width: 16rem;
+  height: 16rem;
+  bottom: -10%;
+  right: -5%;
+  background-color: #FF6B9D;
+  opacity: 0.1;
+}
+
+.error-deco-3 {
+  width: 12rem;
+  height: 12rem;
+  top: 20%;
+  right: 10%;
+  background-color: #39FF14;
+  opacity: 0.12;
+}
+
+.error-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #00ADEE 2px, transparent 2px);
+  background-size: 24px 24px;
+  opacity: 0.2;
+}
+
+.error-number-memphis {
+    font-family: 'Fredoka One', cursive;
+    font-size: 150px;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--color-text);
+    opacity: 0.1;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .error-number-memphis {
+      font-size: 200px;
+    }
+  }
+
+  .error-icon-memphis {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 9999px;
+    background-color: #FF6B9D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+    animation: bounce-wiggle 2s ease-in-out infinite;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .error-icon-memphis {
+      box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .error-icon-svg {
+    width: 3.5rem;
+    height: 3.5rem;
+    color: white;
+  }
+
+  .error-title-memphis {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.875rem;
+    line-height: 2.5rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .error-title-memphis {
+      font-size: 3rem;
+      line-height: 1;
+    }
+  }
+
+  .error-desc-memphis {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.25rem;
+    color: var(--color-gray-600);
+  }
+
+@media (min-width: 768px) {
+  .error-number-memphis {
+    font-size: 200px;
+  }
+}
+
+.error-icon-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-icon-memphis {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  background-color: #FF6B9D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+  animation: bounce-wiggle 2s ease-in-out infinite;
+}
+
+.error-icon-svg {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: white;
+}
+
+.error-title-memphis {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.875rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+  color: #2D2D2D;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .error-title-memphis {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.error-desc-memphis {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  color: #4B5563;
+}
+
+.error-buttons-memphis {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .error-buttons-memphis {
+    flex-direction: row;
+  }
+}
+
+@keyframes bounce-wiggle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+</style>

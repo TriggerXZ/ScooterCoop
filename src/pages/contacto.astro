@@ -1,336 +1,374 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Animation from "../components/Animation.astro";
+import MemphisCard from "../components/MemphisCard.astro";
+import MemphisButton from "../components/MemphisButton.astro";
 ---
 
-<Layout
-  title="Contacto"
-  description="Contáctanos para reservar tu scooter eléctrico o solicitar más información"
->
-  <script src="../scripts/contact-form.js"></script>
-  <script src="../scripts/image-viewer.js"></script>
+<Layout title="Contacto" description="Reserva tu scooter eléctrico en el Malecón de Barranquilla">
+  <!-- Hero -->
+  <section class="hero-memphis">
+    <div class="hero-pattern"></div>
+    <div class="hero-deco hero-deco-1"></div>
+    <div class="hero-deco hero-deco-2"></div>
 
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden py-24 bg-dark">
-    <!-- Fondo Dinámico -->
-    <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-dark to-dark opacity-40"
-    >
-    </div>
-    <div
-      class="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 bg-[length:40px_40px]"
-    >
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10 text-center">
-      <Animation animation="fade-down">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-            >Contáctanos</span
-          >
-        </h1>
-      </Animation>
-      <Animation animation="fade-up" delay={200}>
-        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-          Estamos listos para ayudarte a planear tu próxima aventura en el
-          Malecón.
-        </p>
-      </Animation>
+    <div class="container mx-auto px-4 py-32 relative z-10">
+      <h1 class="hero-title-memphis text-center">
+        RESERVA<br/>
+        <span class="text-lime">AHORA</span>
+      </h1>
+      <p class="hero-desc-memphis text-center">Completa el formulario y vive la experiencia</p>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="py-16 bg-dark relative">
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Contact Form -->
-        <Animation animation="fade-right">
-          <div
-            class="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden"
-          >
-            <div
-              class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[50px] -mr-16 -mt-16"
-            >
-            </div>
-
-            <h2 class="text-2xl font-bold mb-6 text-white relative z-10">
-              Envíanos un mensaje
-            </h2>
-            <form
-              id="contactForm"
-              action="https://formsubmit.co/kaminatrigger@gmail.com"
-              method="POST"
-              class="space-y-6 relative z-10"
-            >
-              <!-- Campos ocultos -->
-              <input
-                type="hidden"
-                name="_subject"
-                value="Nueva reserva de ScooterCoop"
-              />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input
-                type="hidden"
-                name="_next"
-                value="https://scootercoop.com/gracias"
-              />
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label for="nombre" class="block text-gray-400 mb-2 text-sm"
-                    >Nombre</label
-                  >
-                  <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                    required
-                  />
-                </div>
-                <div>
-                  <label for="apellido" class="block text-gray-400 mb-2 text-sm"
-                    >Apellido</label
-                  >
-                  <input
-                    type="text"
-                    id="apellido"
-                    name="apellido"
-                    class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label for="email" class="block text-gray-400 mb-2 text-sm"
-                  >Correo Electrónico</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                  required
-                />
-              </div>
-
-              <div>
-                <label for="telefono" class="block text-gray-400 mb-2 text-sm"
-                  >Teléfono</label
-                >
-                <input
-                  type="tel"
-                  id="telefono"
-                  name="telefono"
-                  class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                />
-              </div>
-
-              <div>
-                <label for="servicio" class="block text-gray-400 mb-2 text-sm"
-                  >Servicio de Interés</label
-                >
-                <select
-                  id="servicio"
-                  name="servicio"
-                  class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none"
-                >
-                  <option value="" class="bg-dark"
-                    >Selecciona un servicio</option
-                  >
-                  <option value="30min" class="bg-dark"
-                    >Alquiler 30 minutos</option
-                  >
-                  <option value="40min" class="bg-dark"
-                    >Alquiler 40 minutos</option
-                  >
-                  <option value="60min" class="bg-dark">Alquiler 1 hora</option>
-                  <option value="grupo" class="bg-dark">Tour grupal</option>
-                  <option value="evento" class="bg-dark">Evento especial</option
-                  >
-                </select>
-              </div>
-
-              <div>
-                <label for="cantidad" class="block text-gray-400 mb-2 text-sm"
-                  >Cantidad de Patinetas</label
-                >
-                <input
-                  type="number"
-                  id="cantidad"
-                  name="cantidad"
-                  min="1"
-                  value="1"
-                  class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                />
-              </div>
-
-              <!-- Total Estimado -->
-              <div
-                id="totalContainer"
-                class="hidden p-4 bg-white/5 rounded-xl border border-white/10"
-              >
-                <div class="flex justify-between items-center">
-                  <span class="text-gray-300">Total Estimado:</span>
-                  <span id="totalPrice" class="text-2xl font-bold text-primary"
-                    >$0 COP</span
-                  >
-                </div>
-                <p id="totalNote" class="text-xs text-gray-500 mt-1 text-right">
-                </p>
-              </div>
-
-              <div>
-                <label for="mensaje" class="block text-gray-400 mb-2 text-sm"
-                  >Mensaje</label
-                >
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  rows="4"
-                  class="w-full px-4 py-3 bg-dark/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                  required></textarea>
-              </div>
-
-              <div id="statusMessage" class="hidden mb-4 text-sm"></div>
-
-              <button
-                type="submit"
-                class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-6 rounded-xl hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all transform hover:scale-[1.02]"
-              >
-                Enviar Mensaje
-              </button>
-            </form>
-          </div>
-        </Animation>
-
-        <!-- Contact Info -->
-        <Animation animation="fade-left" delay={200}>
-          <div class="space-y-8">
-            <div>
-              <h2 class="text-2xl font-bold mb-8 text-white">
-                Información de Contacto
-              </h2>
-              <div class="space-y-6">
-                <div class="flex items-start group">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 text-primary group-hover:bg-primary/20 transition-colors"
-                  >
-                    <i class="bx bx-map text-2xl"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-lg text-white mb-1">Dirección</h3>
-                    <p class="text-gray-400">
-                      Malecón del Río, Barranquilla, Colombia
-                    </p>
-                    <p class="text-gray-500 text-sm">Vía 40 con calle 79</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start group">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 text-primary group-hover:bg-primary/20 transition-colors"
-                  >
-                    <i class="bx bx-phone text-2xl"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-lg text-white mb-1">Teléfono</h3>
-                    <p class="text-gray-400">+57 300 123 4567</p>
-                    <p class="text-gray-400">+57 5 123 4567</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start group">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 text-primary group-hover:bg-primary/20 transition-colors"
-                  >
-                    <i class="bx bx-envelope text-2xl"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-lg text-white mb-1">Email</h3>
-                    <p class="text-gray-400">scootercoopinfo@gmail.com</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start group">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 text-primary group-hover:bg-primary/20 transition-colors"
-                  >
-                    <i class="bx bx-time text-2xl"></i>
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-lg text-white mb-1">
-                      Horario de Atención
-                    </h3>
-                    <p class="text-gray-400">
-                      Lunes a Viernes: 3:00 PM - 10:00 PM
-                    </p>
-                    <p class="text-gray-400">
-                      Sábados y Domingos: 2:00 PM - 11:00 PM
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social Media -->
-            <div>
-              <h2 class="text-2xl font-bold mb-6 text-white">Síguenos</h2>
-              <div class="flex space-x-4">
-                <a
-                  href="#"
-                  class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all duration-300"
-                >
-                  <i class="bx bxl-facebook text-2xl"></i>
-                </a>
-                <a
-                  href="https://www.instagram.com/scootercoop_/"
-                  class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all duration-300"
-                >
-                  <i class="bx bxl-instagram text-2xl"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-primary hover:text-dark transition-all duration-300"
-                >
-                  <i class="bx bxl-whatsapp text-2xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </Animation>
-      </div>
-    </div>
-  </section>
-
-  <!-- Map Section -->
-  <section class="py-16 bg-dark border-t border-white/5">
+  <!-- Contact Form -->
+  <section class="py-24 bg-cream">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-white">
-        Nuestra Ubicación
-      </h2>
-      <div class="bg-white/5 p-2 rounded-3xl border border-white/10 shadow-2xl">
-        <div class="bg-dark h-96 rounded-2xl overflow-hidden relative group">
-          <img
-            src="/mapa.jpg"
-            alt="Mapa de ubicación en el Malecón del Río, Barranquilla"
-            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-          />
-          <div
-            class="absolute inset-0 flex items-center justify-center pointer-events-none"
-          >
-            <div
-              class="bg-dark/80 backdrop-blur-sm px-6 py-3 rounded-full border border-primary/50 text-primary font-bold flex items-center gap-2"
-            >
-              <i class="bx bx-map-pin text-2xl animate-bounce"></i>
-              Encuéntranos aquí
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Form -->
+        <MemphisCard variant="blue" class="form-card-memphis">
+          <h2 class="form-title-memphis">DATOS DE LA RESERVA</h2>
+
+          <form id="contactForm" action="https://formsubmit.co/kaminatrigger@gmail.com" method="POST" class="form-space-memphis">
+            <input type="hidden" name="_subject" value="Nueva reserva de ScooterCoop" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://scootercoop.com/gracias" />
+
+            <div class="form-grid-memphis">
+              <div class="form-group-memphis">
+                <label class="form-label-memphis">NOMBRE</label>
+                <input type="text" name="nombre" class="memphis-input" required />
+              </div>
+              <div class="form-group-memphis">
+                <label class="form-label-memphis">APELLIDO</label>
+                <input type="text" name="apellido" class="memphis-input" required />
+              </div>
             </div>
-          </div>
+
+            <div class="form-group-memphis">
+              <label class="form-label-memphis">EMAIL</label>
+              <input type="email" name="email" class="memphis-input" required />
+            </div>
+
+            <div class="form-group-memphis">
+              <label class="form-label-memphis">TELÉFONO</label>
+              <input type="tel" name="telefono" class="memphis-input" />
+            </div>
+
+            <div class="form-group-memphis">
+              <label class="form-label-memphis">TIPO DE SERVICIO</label>
+              <select id="servicio" name="servicio" class="memphis-select" onchange="calcularTotal()">
+                <option value="">Selecciona un servicio</option>
+                <option value="30min" data-price="25000">Alquiler 30 minutos</option>
+                <option value="40min" data-price="30000">Alquiler 40 minutos</option>
+                <option value="60min" data-price="40000">Alquiler 1 hora</option>
+                <option value="ruta-cultura" data-price="35000">Ruta Cultura ($35.000)</option>
+                <option value="ruta-atardecer" data-price="40000">Ruta Atardecer ($40.000)</option>
+                <option value="ruta-completa" data-price="50000">Ruta Completa ($50.000)</option>
+              </select>
+            </div>
+
+            <div class="form-group-memphis">
+              <label class="form-label-memphis">CANTIDAD DE SCOOTERS</label>
+              <input type="number" id="cantidad" name="cantidad" min="1" value="1" class="memphis-input" onchange="calcularTotal()" oninput="calcularTotal()" />
+            </div>
+
+            <!-- Total Calculator -->
+            <div class="total-box-memphis">
+              <div class="total-row-memphis">
+                <span>Precio unitario:</span>
+                <span id="precio-unitario" class="text-gray-400">$0</span>
+              </div>
+              <div class="total-row-memphis">
+                <span>Cantidad:</span>
+                <span id="cantidad-display">1</span>
+              </div>
+              <div class="total-divider-memphis"></div>
+              <div class="total-final-memphis">
+                <span>TOTAL A PAGAR:</span>
+                <span id="total-precio" class="text-lime text-2xl font-bold">$0 COP</span>
+              </div>
+            </div>
+
+            <div class="form-group-memphis">
+              <label class="form-label-memphis">MENSAJE (Opcional)</label>
+              <textarea name="mensaje" rows="3" class="memphis-textarea"></textarea>
+            </div>
+
+            <MemphisButton type="submit" variant="primary" class="w-full">
+              ENVIAR RESERVA
+              <i class="bx bx-send"></i>
+            </MemphisButton>
+          </form>
+        </MemphisCard>
+
+        <!-- Info -->
+        <div class="info-section-memphis flex flex-col gap-6">
+          <MemphisCard variant="yellow" class="info-card-memphis">
+            <h3 class="info-title-memphis">CONTACTO DIRECTO</h3>
+            <ul class="info-list-memphis">
+              <li>
+                <i class="bx bx-map text-lime"></i>
+                <div>
+                  <h4>Ubicación</h4>
+                  <p>Malecón del Río, Barranquilla</p>
+                </div>
+              </li>
+              <li>
+                <i class="bx bx-phone text-lime"></i>
+                <div>
+                  <h4>Teléfono</h4>
+                  <p>+57 300 123 4567</p>
+                </div>
+              </li>
+              <li>
+                <i class="bx bx-envelope text-lime"></i>
+                <div>
+                  <h4>Email</h4>
+                  <p>info@scootercoop.com</p>
+                </div>
+              </li>
+              <li>
+                <i class="bx bx-time text-lime"></i>
+                <div>
+                  <h4>Horario</h4>
+                  <p>Lun - Vie: 3PM - 10PM</p>
+                  <p>Sáb - Dom: 2PM - 11PM</p>
+                </div>
+              </li>
+            </ul>
+          </MemphisCard>
+
+          <MemphisCard variant="pink" class="social-card-memphis">
+            <h3 class="info-title-memphis">SÍGUENOS</h3>
+            <div class="social-links-memphis">
+              <a href="https://instagram.com/scootercoop" target="_blank" class="social-btn-memphis">
+                <i class="bx bxl-instagram"></i>
+              </a>
+              <a href="https://facebook.com/scootercoop" target="_blank" class="social-btn-memphis">
+                <i class="bx bxl-facebook"></i>
+              </a>
+              <a href="https://wa.me/573001234567" target="_blank" class="social-btn-memphis">
+                <i class="bx bxl-whatsapp"></i>
+              </a>
+            </div>
+          </MemphisCard>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Map -->
+  <section class="py-16 bg-cream">
+    <div class="container mx-auto px-4">
+      <MemphisCard variant="yellow" class="map-container-memphis">
+        <img src="/mapa.jpg" alt="Mapa de ubicación de ScooterCoop en el Malecón" class="map-image-memphis" />
+        <div class="map-pin-memphis">
+          <i class="bx bx-map-pin text-2xl"></i>
+          <span>Malecón del Río, Barranquilla</span>
+        </div>
+      </MemphisCard>
+    </div>
+  </section>
+
+  <script>
+    function calcularTotal() {
+      const select = document.getElementById('servicio') as HTMLSelectElement | null;
+      const cantidadInput = document.getElementById('cantidad') as HTMLInputElement | null;
+      const precioUnitarioEl = document.getElementById('precio-unitario');
+      const cantidadDisplay = document.getElementById('cantidad-display');
+      const totalPrecio = document.getElementById('total-precio');
+
+      if (!select || !cantidadInput || !precioUnitarioEl || !cantidadDisplay || !totalPrecio) return;
+
+      const selectedOption = select.options[select.selectedIndex];
+      const precioUnitario = selectedOption ? parseInt(selectedOption.getAttribute('data-price') || '0') : 0;
+      const cantidad = parseInt(cantidadInput.value) || 1;
+      const total = precioUnitario * cantidad;
+
+      precioUnitarioEl.textContent = precioUnitario > 0 ? '$' + precioUnitario.toLocaleString() : '$0';
+      cantidadDisplay.textContent = cantidad.toString();
+      totalPrecio.textContent = '$' + total.toLocaleString() + ' COP';
+    }
+
+    calcularTotal();
+  </script>
 </Layout>
+
+<style>
+.hero-memphis {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-cream);
+  overflow: hidden;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #39FF14 3px, transparent 3px);
+  background-size: 24px 24px;
+  opacity: 0.3;
+}
+
+.hero-deco {
+  @apply absolute pointer-events-none rounded-full;
+}
+
+.hero-deco-1 {
+  @apply w-32 h-32 rounded-full bg-lime;
+  top: 10%;
+  right: 15%;
+  opacity: 0.2;
+}
+
+.hero-deco-2 {
+  @apply w-20 h-20 rounded-full bg-pink;
+  bottom: 15%;
+  left: 10%;
+  opacity: 0.25;
+}
+
+.hero-title-memphis {
+    @apply font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4;
+    color: var(--color-text);
+  }
+
+.hero-desc-memphis {
+  @apply font-body text-lg;
+  color: var(--color-gray-600);
+}
+
+.form-card-memphis {
+  @apply p-6;
+}
+
+.form-title-memphis {
+    @apply font-heading text-xl font-bold mb-6;
+    color: var(--color-text);
+  }
+
+.form-space-memphis {
+  @apply flex flex-col gap-4;
+}
+
+.form-grid-memphis {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.form-group-memphis .memphis-input,
+.form-group-memphis .memphis-select,
+.form-group-memphis .memphis-textarea {
+  @apply w-full px-4 py-3 bg-white border-4 border-solid border-text font-body;
+  color: var(--color-text);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group-memphis .memphis-input:focus,
+.form-group-memphis .memphis-select:focus,
+.form-group-memphis .memphis-textarea:focus {
+  @apply border-pink;
+  box-shadow: 4px 4px 0px var(--color-pink);
+}
+
+.total-box-memphis {
+  @apply bg-cream border-4 border-dashed border-text p-4;
+}
+
+.total-row-memphis {
+    @apply flex justify-between py-2 font-body text-sm;
+    color: var(--color-text);
+  }
+
+  .total-divider-memphis {
+    @apply h-0.5 my-2;
+    background-color: var(--color-text);
+  }
+
+  .total-final-memphis {
+    @apply flex justify-between items-center font-heading text-base;
+    color: var(--color-text);
+  }
+
+.info-section-memphis {
+  @apply flex flex-col gap-6;
+}
+
+.info-card-memphis {
+  @apply p-6;
+}
+
+.info-title-memphis {
+    @apply font-heading text-lg font-bold mb-4;
+    color: var(--color-text);
+  }
+
+.info-list-memphis {
+  @apply list-none p-0 m-0;
+}
+
+.info-list-memphis li {
+  @apply flex gap-4 py-3 border-b border-dashed border-gray-300;
+}
+
+.info-list-memphis li:last-child {
+  @apply border-b-0;
+}
+
+.info-list-memphis li i {
+  @apply text-xl text-lime;
+}
+
+.info-list-memphis h4 {
+    @apply font-subheading font-bold text-sm mb-1;
+    color: var(--color-text);
+  }
+
+  .info-list-memphis p {
+    @apply font-body text-sm;
+    color: var(--color-gray-500);
+  }
+
+.social-card-memphis {
+  @apply p-6;
+}
+
+.social-links-memphis {
+  @apply flex gap-4;
+}
+
+.social-btn-memphis {
+    @apply w-12 h-12 rounded-full border-4 border-solid border-text flex items-center justify-center transition-all duration-200;
+    color: var(--color-text);
+  }
+
+.social-btn-memphis:hover {
+  @apply bg-pink border-pink text-white;
+  transform: scale(1.1);
+}
+
+.social-btn-memphis i {
+  @apply text-xl;
+}
+
+.map-container-memphis {
+  @apply relative overflow-hidden;
+}
+
+.map-image-memphis {
+  @apply w-full h-auto max-h-96 object-cover;
+}
+
+.map-pin-memphis {
+    @apply absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 bg-white border-4 border-solid border-yellow font-subheading font-bold text-sm rounded-full;
+    color: var(--color-text);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+.map-pin-memphis i {
+  @apply text-yellow;
+}
+</style>

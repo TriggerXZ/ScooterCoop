@@ -1,0 +1,419 @@
+---
+// HeroSection.astro - Memphis style hero with playful shapes and bold colors
+interface Props {
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+  stats?: {
+    label: string;
+    value: string;
+    color: string;
+  }[];
+}
+
+const {
+  title = "Muévete con SCOOTERCOOP",
+  subtitle = "Alquila un scooter eléctrico y explora el malecon del Rio rápido, ecológico y divertido.",
+  ctaText = "Alquila Ahora",
+  stats = [
+    { label: "CO2 Ahorrado", value: "12.5 kg", color: "lime" },
+    { label: "Rutas Totales", value: "1,240", color: "pink" },
+    { label: "Km Recorridos", value: "8,450 km", color: "blue" },
+  ],
+} = Astro.props;
+
+const titleWords = title.split(" ");
+---
+
+<section
+  class="hero-memphis relative min-h-screen flex items-center justify-center overflow-hidden"
+>
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 memphis-dots opacity-50"></div>
+
+  <!-- Decorative floating shapes -->
+  <div class="deco-shape deco-circle-1"></div>
+  <div class="deco-shape deco-circle-2"></div>
+  <div class="deco-shape deco-triangle"></div>
+  <div class="deco-shape deco-squiggle-top"></div>
+  <div class="deco-shape deco-squiggle-bottom"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center">
+      <!-- Main Title with colorful words -->
+      <h1 class="hero-title mb-6">
+        {
+          titleWords.map((word, i) => (
+            <span
+              class:list={[
+                "title-word",
+                i === 0 && "text-pink",
+                i === 1 && "text-yellow",
+                i === 2 && "text-blue",
+                i === 3 && "text-lime",
+              ]}
+            >
+              {word}
+            </span>
+          ))
+        }
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle max-w-2xl mx-auto mb-12">
+        {subtitle}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+      >
+        <a
+          href="#reservar"
+          class="memphis-btn memphis-btn-primary text-lg px-10 py-4 animate-bounce-memphis"
+        >
+          <span>{ctaText}</span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+        <a
+          href="#como-funciona"
+          class="memphis-btn memphis-btn-secondary text-lg px-10 py-4"
+        >
+          Cómo Funciona
+        </a>
+      </div>
+
+      <!-- Bento Grid Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {
+          stats.map((stat, index) => (
+            <div
+              class:list={["bento-stat-memphis", `bento-${stat.color}`]}
+              style={`animation-delay: ${index * 100}ms`}
+            >
+              <div class="stat-icon">
+                {stat.color === "lime" && (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                )}
+                {stat.color === "pink" && (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                )}
+                {stat.color === "blue" && (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                )}
+              </div>
+              <div class="stat-content">
+                <span class={`stat-value text-${stat.color}`}>
+                  {stat.value}
+                </span>
+                <span class="stat-label">{stat.label}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator-memphis">
+    <div class="scroll-arrow">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <path d="M12 5v14M5 12l7 7 7-7"></path>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-memphis {
+    background-color: var(--color-cream);
+  }
+
+  .hero-title {
+    font-family: "Fredoka One", cursive;
+    font-size: 2.25rem;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--color-text);
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: 4.5rem;
+    }
+  }
+
+  .title-word {
+    display: inline-block;
+    margin-right: 1rem;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .hero-subtitle {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.125rem;
+    color: var(--color-gray-600);
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* Decorative shapes */
+  .deco-shape {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .deco-circle-1 {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 9999px;
+    background-color: #ffe135;
+    top: 10%;
+    left: 5%;
+    opacity: 0.3;
+    animation: float-memphis 6s ease-in-out infinite;
+  }
+
+  .deco-circle-2 {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+    background-color: #ff6b9d;
+    bottom: 20%;
+    right: 10%;
+    opacity: 0.25;
+    animation: float-memphis 5s ease-in-out infinite reverse;
+  }
+
+  .deco-triangle {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid #39ff14;
+    top: 15%;
+    right: 15%;
+    opacity: 0.2;
+    animation: float-memphis 7s ease-in-out infinite;
+  }
+
+  .deco-squiggle-top {
+    position: absolute;
+    width: 12rem;
+    height: 2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q 12.5 0, 25 10 T 50 10 T 75 10 T 100 10' stroke='%23FF6B9D' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 100px 20px;
+    top: 5%;
+    right: 30%;
+    opacity: 0.4;
+  }
+
+  .deco-squiggle-bottom {
+    position: absolute;
+    width: 16rem;
+    height: 1.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 Q 12.5 0, 25 10 T 50 10 T 75 10 T 100 10' stroke='%23FFE135' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 100px 20px;
+    bottom: 15%;
+    left: 10%;
+    opacity: 0.3;
+  }
+
+  /* Bento Stats */
+  .bento-stat-memphis {
+    background-color: var(--color-white);
+    border: 4px solid;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: drop-in 0.5s ease-out backwards;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .bento-stat-memphis:hover {
+    transform: translateY(-4px) rotate(1deg);
+    box-shadow: 10px 10px 0 var(--shadow-color);
+  }
+
+  .bento-lime {
+    border-color: #39ff14;
+  }
+
+  .bento-pink {
+    border-color: #ff6b9d;
+  }
+
+  .bento-blue {
+    border-color: #00adee;
+  }
+
+  .stat-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stat-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .bento-lime .stat-icon {
+    color: #39ff14;
+  }
+
+  .bento-pink .stat-icon {
+    color: #ff6b9d;
+  }
+
+  .bento-blue .stat-icon {
+    color: #00adee;
+  }
+
+  .stat-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-family: "Fredoka One", cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text);
+  }
+
+  @media (min-width: 768px) {
+    .stat-value {
+      font-size: 1.875rem;
+    }
+  }
+
+  .stat-label {
+    font-family: "Nunito", sans-serif;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator-memphis {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .scroll-arrow {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background-color: var(--color-white);
+    border: 4px solid var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce-scroll 2s ease-in-out infinite;
+    box-shadow: 4px 4px 0 var(--shadow-color);
+  }
+
+  .scroll-arrow svg {
+    color: var(--color-text);
+  }
+
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    .title-word {
+      text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  @keyframes bounce-scroll {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  @keyframes float-memphis {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(5deg);
+    }
+  }
+
+  @keyframes drop-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.8);
+    }
+    70% {
+      transform: translateY(5px) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>

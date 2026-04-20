@@ -1,0 +1,395 @@
+---
+// ReviewsSection.astro - Memphis style reviews section with playful design
+interface Review {
+  id: string;
+  user: {
+    name: string;
+    avatar?: string;
+  };
+  rating: number;
+  text: string;
+  photos?: string[];
+  date: string;
+  verified?: boolean;
+}
+
+interface Props {
+  averageRating?: number;
+  totalReviews?: number;
+  reviews?: Review[];
+}
+
+const {
+  averageRating = 4.8,
+  totalReviews = 2340,
+  reviews = [
+    {
+      id: "1",
+      user: { name: "María G." },
+      rating: 5,
+      text: "Perfecto para moverme por la ciudad. Scooter en perfecto estado y proceso super rápido. ¡Recomendado!",
+      photos: ["/review-scooter-1.jpg"],
+      date: "Hace 2 días",
+      verified: true
+    },
+    {
+      id: "2",
+      user: { name: "Carlos M." },
+      rating: 5,
+      text: "Me encanta la app. Siempre encuentro scooters disponibles y la batería dura bastante. El sistema de desbloqueo es instantáneo.",
+      date: "Hace 1 semana",
+      verified: true
+    },
+    {
+      id: "3",
+      user: { name: "Ana L." },
+      rating: 4,
+      text: "Buena experiencia en general. Me gustaría ver más estaciones en la zona norte.",
+      date: "Hace 2 semanas",
+      verified: false
+    }
+  ]
+} = Astro.props;
+
+const renderStars = (rating: number, color: string = "yellow") => {
+  return Array.from({ length: 5 }, (_, i) => i < rating);
+};
+
+const starColors = ["yellow", "pink", "blue", "lime", "purple"];
+---
+
+<section class="reviews-memphis py-16 bg-cream">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Header with rating -->
+    <div class="text-center mb-12">
+      <!-- Decorative elements -->
+      <div class="review-deco review-deco-1"></div>
+      <div class="review-deco review-deco-2"></div>
+
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <div class="rating-circle">
+          <span class="rating-number">{averageRating}</span>
+        </div>
+        <div class="text-left">
+          <div class="stars-container">
+            {renderStars(Math.round(averageRating)).map((filled, i) => (
+              <svg
+                key={i}
+                class:list={["star-icon", filled ? "star-filled" : "star-empty"]}
+                viewBox="0 0 24 24"
+                fill={filled ? starColors[i % starColors.length] : "none"}
+                stroke={filled ? starColors[i % starColors.length] : "#CBD5E1"}
+                stroke-width="2"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            ))}
+          </div>
+          <p class="reviews-count">{totalReviews.toLocaleString()} reseñas</p>
+        </div>
+      </div>
+      <p class="text-gray-500 font-body">Basado en experiencias reales de usuarios</p>
+    </div>
+
+    <!-- Grid de reseñas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {reviews.map((review, index) => (
+        <article
+          class:list={["review-card-memphis", `review-variant-${(index % 3) + 1}`]}
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <!-- Decorative corner -->
+          <div class="review-corner"></div>
+
+          <!-- Header -->
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class:list={["avatar-memphis", `avatar-${(index % 3) + 1}`]}>
+                {review.user.name.charAt(0)}
+              </div>
+              <div>
+                <h4 class="reviewer-name flex items-center gap-2">
+                  {review.user.name}
+                  {review.verified && (
+                    <span class="verified-badge">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                      </svg>
+                    </span>
+                  )}
+                </h4>
+                <p class="review-date">{review.date}</p>
+              </div>
+            </div>
+            <div class="review-stars">
+              {renderStars(review.rating, starColors[index % starColors.length]).map((filled, i) => (
+                <svg
+                  key={i}
+                  class:list={["mini-star", filled ? "mini-star-filled" : "mini-star-empty"]}
+                  viewBox="0 0 24 24"
+                  fill={filled ? starColors[index % starColors.length] : "none"}
+                  stroke={filled ? starColors[index % starColors.length] : "#CBD5E1"}
+                  stroke-width="2"
+                >
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              ))}
+            </div>
+          </div>
+
+          <!-- Review Text -->
+          <p class="review-text">
+            {review.text}
+          </p>
+
+          <!-- Photos (si existen) -->
+          {review.photos && review.photos.length > 0 && (
+            <div class="review-photos flex gap-2 mt-4">
+              {review.photos.map((photo) => (
+                <div class="photo-thumb">
+                  <img
+                    src={photo}
+                    alt="Foto del usuario"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          <!-- Helpful Button -->
+          <button class="helpful-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+            </svg>
+            <span>Útil</span>
+          </button>
+        </article>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a href="#" class="memphis-btn memphis-btn-outline px-8 py-3">
+        Ver todas las reseñas ({totalReviews.toLocaleString()})
+      </a>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges-memphis">
+      <div class="trust-item">
+        <div class="trust-icon trust-icon-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <span class="trust-text">Usuarios Verificados</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon trust-icon-2">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <span class="trust-text">Reviews Autenticas</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon trust-icon-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <span class="trust-text">Respuesta Rápida</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-memphis {
+    @apply relative;
+    background-image: radial-gradient(circle, var(--color-text-dots) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .reviews-memphis {
+      --color-text-dots: rgba(245,245,245,0.05);
+    }
+  }
+
+  :root {
+    --color-text-dots: rgba(45,45,45,0.03);
+  }
+
+.review-deco {
+  @apply absolute pointer-events-none;
+}
+
+.review-deco-1 {
+  @apply w-24 h-24 rounded-full bg-yellow;
+  top: 2rem;
+  left: 5%;
+  opacity: 0.2;
+}
+
+.review-deco-2 {
+  @apply w-16 h-16 rounded-full bg-pink;
+  top: 4rem;
+  right: 8%;
+  opacity: 0.15;
+}
+
+.rating-circle {
+  @apply w-20 h-20 rounded-full bg-yellow flex items-center justify-center;
+  box-shadow: 4px 4px 0 var(--color-brown);
+}
+
+.rating-number {
+  @apply font-heading text-4xl font-bold text-text;
+}
+
+.stars-container {
+  @apply flex gap-1 mb-1;
+}
+
+.star-icon {
+  @apply w-5 h-5;
+}
+
+.reviews-count {
+  @apply font-body text-sm text-gray-500;
+}
+
+/* Review Cards */
+.review-card-memphis {
+  @apply bg-white border-4 border-solid p-6 relative;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.08);
+  animation: drop-in 0.4s ease-out backwards;
+  transition: all 0.3s ease;
+  border-radius: 0 !important;
+}
+
+.review-card-memphis:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.review-variant-1 {
+  @apply border-pink;
+}
+
+.review-variant-2 {
+  @apply border-yellow;
+}
+
+.review-variant-3 {
+  @apply border-blue;
+}
+
+.review-corner {
+  @apply absolute top-0 right-0 w-8 h-8 rounded-full;
+  transform: translate(30%, -30%);
+}
+
+.review-variant-1 .review-corner {
+  @apply bg-pink;
+}
+
+.review-variant-2 .review-corner {
+  @apply bg-yellow;
+}
+
+.review-variant-3 .review-corner {
+  @apply bg-blue;
+}
+
+.avatar-memphis {
+  @apply w-12 h-12 rounded-full flex items-center justify-center font-heading font-bold text-lg text-white;
+}
+
+.avatar-1 {
+  @apply bg-pink;
+}
+
+.avatar-2 {
+  @apply bg-yellow text-text;
+}
+
+.avatar-3 {
+  @apply bg-blue;
+}
+
+.reviewer-name {
+  @apply font-subheading font-bold text-text;
+}
+
+.verified-badge {
+  @apply w-5 h-5 rounded-full bg-lime flex items-center justify-center text-dark;
+}
+
+.review-date {
+  @apply font-body text-xs text-gray-500;
+}
+
+.review-stars {
+  @apply flex gap-0.5;
+}
+
+.mini-star {
+  @apply w-4 h-4;
+}
+
+.review-text {
+  @apply font-body text-gray-600 leading-relaxed;
+}
+
+.photo-thumb {
+  @apply w-14 h-14 rounded-lg overflow-hidden border-2 border-gray-100;
+}
+
+.photo-thumb img {
+  @apply w-full h-full object-cover;
+}
+
+.helpful-btn {
+  @apply mt-4 flex items-center gap-2 text-sm text-gray-400 hover:text-pink transition-colors font-body;
+}
+
+.helpful-btn:hover {
+  @apply text-pink;
+}
+
+/* Trust Badges */
+.trust-badges-memphis {
+  @apply flex flex-wrap justify-center gap-8 mt-12 pt-8 border-t-2 border-dashed border-gray-300;
+}
+
+.trust-item {
+  @apply flex items-center gap-3;
+}
+
+.trust-icon {
+  @apply w-10 h-10 rounded-full flex items-center justify-center;
+}
+
+.trust-icon svg {
+  @apply w-6 h-6;
+}
+
+.trust-icon-1 {
+  @apply bg-lime text-dark;
+}
+
+.trust-icon-2 {
+  @apply bg-yellow text-text;
+}
+
+.trust-icon-3 {
+  @apply bg-pink text-white;
+}
+
+.trust-text {
+  @apply font-subheading font-semibold text-gray-600 text-sm;
+}
+</style>

@@ -1,0 +1,419 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MemphisCard from "../components/MemphisCard.astro";
+import MemphisButton from "../components/MemphisButton.astro";
+---
+
+<Layout title="Experiencias" description="Rutas guiadas por los puntos icónicos del Malecón de Barranquilla">
+  <!-- Hero Section -->
+  <section class="hero-memphis">
+    <div class="hero-pattern"></div>
+    <div class="hero-deco hero-deco-1"></div>
+    <div class="hero-deco hero-deco-2"></div>
+
+    <div class="container mx-auto px-4 py-32 relative z-10">
+      <h1 class="hero-title-memphis text-center">
+        EXPERIENCIAS<br/>
+        <span class="text-lime">ÚNICAS</span>
+      </h1>
+      <p class="hero-desc-memphis text-center">Descubre los tesoros del Malecón en scooter eléctrico</p>
+    </div>
+  </section>
+
+  <!-- Routes Section -->
+  <section class="py-24 bg-cream">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title">RUTAS GUIADAS</h2>
+        <p class="section-subtitle mt-4">Recorre los puntos más icónicos de Barranquilla</p>
+      </div>
+
+      <!-- Route 1: Cultura -->
+      <MemphisCard variant="blue" class="route-card-memphis mb-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="route-grid-memphis">
+          <div class="route-image-memphis">
+            <img src="/monumentotiburon.jpg" alt="Aleta del Tiburón" />
+            <span class="route-badge-memphis route-badge-blue">CULTURA</span>
+          </div>
+          <div class="route-content-memphis">
+            <h3 class="route-title-memphis">RUTA CULTURA BARRANQUILLERA</h3>
+            <p class="route-desc-memphis">Recorre los monumentos que celebrán la herencia cultural de la ciudad.</p>
+
+            <div class="route-stops-memphis">
+              <div class="stop-item-memphis">
+                <i class="bx bx-shape-triangle stop-icon-blue"></i>
+                <div>
+                  <h4>Aleta del Tiburón</h4>
+                  <p>Homenaje al Junior de Barranquilla - 36 metros de altura</p>
+                </div>
+              </div>
+              <div class="stop-item-memphis">
+                <i class="bx bx-user stop-icon-blue"></i>
+                <div>
+                  <h4>Estatua de Shakira</h4>
+                  <p>6.5 metros - La reina del Carnaval</p>
+                </div>
+              </div>
+              <div class="stop-item-memphis">
+                <i class="bx bx-star stop-icon-blue"></i>
+                <div>
+                  <h4>Estatua de Sofía Vergara</h4>
+                  <p>El ícono de la belleza colombiana</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="route-footer-memphis">
+              <div class="route-price-memphis">
+                <span class="text-3xl font-bold text-blue">$35.000</span>
+                <span class="text-gray-500 ml-2">COP / persona</span>
+              </div>
+              <MemphisButton href="/contacto?servicio=ruta-cultura" variant="primary">RESERVAR</MemphisButton>
+            </div>
+          </div>
+        </div>
+      </MemphisCard>
+
+      <!-- Route 2: Atardecer -->
+      <MemphisCard variant="coral" class="route-card-memphis mb-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="route-grid-memphis">
+          <div class="route-image-memphis">
+            <img src="/atardecer.jpg" alt="Atardecer Malecón" />
+            <span class="route-badge-memphis route-badge-coral">ATARDECER</span>
+          </div>
+          <div class="route-content-memphis">
+            <h3 class="route-title-memphis">RUTA ATARDECER MÁGICO</h3>
+            <p class="route-desc-memphis">Vive el atardecer más hermoso de Colombia desde los mejores puntos.</p>
+
+            <div class="route-stops-memphis">
+              <div class="stop-item-memphis">
+                <i class="bx bx-moon stop-icon-coral"></i>
+                <div>
+                  <h4>Luna del Río</h4>
+                  <p>La luna más grande del mundo sobre el Magdalena</p>
+                </div>
+              </div>
+              <div class="stop-item-memphis">
+                <i class="bx bx-bot stop-icon-coral"></i>
+                <div>
+                  <h4>Caimán del Río</h4>
+                  <p>Monumento icónico del Malecón</p>
+                </div>
+              </div>
+              <div class="stop-item-memphis">
+                <i class="bx bx-sun stop-icon-coral"></i>
+                <div>
+                  <h4>Punto Panorámico</h4>
+                  <p>El mejor atardecer del Caribe colombiano</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="route-footer-memphis">
+              <div class="route-price-memphis">
+                <span class="text-3xl font-bold text-coral">$40.000</span>
+                <span class="text-gray-500 ml-2">COP / persona</span>
+              </div>
+              <MemphisButton href="/contacto?servicio=ruta-atardecer" variant="accent">RESERVAR</MemphisButton>
+            </div>
+          </div>
+        </div>
+      </MemphisCard>
+
+      <!-- Route 3: Completa -->
+      <MemphisCard variant="yellow" class="route-card-memphis" data-aos="fade-up" data-aos-delay="300">
+        <div class="route-grid-memphis">
+          <div class="route-image-memphis">
+            <img src="/paisaje.jpg" alt="Ruta Completa" />
+            <span class="route-badge-memphis route-badge-yellow">COMPLETA</span>
+          </div>
+          <div class="route-content-memphis">
+            <h3 class="route-title-memphis">RUTA COMPLETA</h3>
+            <p class="route-desc-memphis">La experiencia definitiva. Todos los puntos turísticos con fotos incluidas.</p>
+
+            <div class="route-stops-memphis">
+              <div class="stop-item-memphis">
+                <i class="bx bx-trophy stop-icon-yellow"></i>
+                <div>
+                  <h4>Todos los Monumentos</h4>
+                  <p>Aleta, Shakira, Sofía Vergara, Caimán y más</p>
+                </div>
+              </div>
+              <div class="stop-item-memphis">
+                <i class="bx bx-camera stop-icon-yellow"></i>
+                <div>
+                  <h4>Fotos Profesionales</h4>
+                  <p>Sesión de fotos incluida en puntos clave</p>
+                </div>
+              </div>
+              <div class="stop-item-memphis">
+                <i class="bx bx-gift stop-icon-yellow"></i>
+                <div>
+                  <h4>Souvenir Digital</h4>
+                  <p>Galería privada con todas las fotos</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="route-footer-memphis">
+              <div class="route-price-memphis">
+                <span class="text-3xl font-bold text-yellow">$50.000</span>
+                <span class="text-gray-500 ml-2">COP / persona</span>
+              </div>
+              <MemphisButton href="/contacto?servicio=ruta-completa" variant="primary">RESERVAR</MemphisButton>
+            </div>
+          </div>
+        </div>
+      </MemphisCard>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="py-24 bg-cream">
+    <div class="container mx-auto px-4">
+      <div class="info-grid-memphis">
+        <MemphisCard variant="lime" class="info-card-memphis text-center">
+          <div class="info-icon-memphis info-icon-lime">
+            <i class="bx bx-time text-2xl"></i>
+          </div>
+          <h3 class="info-title-memphis">Duración</h3>
+          <p class="info-desc-memphis">1h 30min - 2 horas dependiendo de la ruta</p>
+        </MemphisCard>
+
+        <MemphisCard variant="pink" class="info-card-memphis text-center">
+          <div class="info-icon-memphis info-icon-pink">
+            <i class="bx bx-group text-2xl"></i>
+          </div>
+          <h3 class="info-title-memphis">Grupos</h3>
+          <p class="info-desc-memphis">Máximo 10 personas por tour. Ideal para familias y amigos.</p>
+        </MemphisCard>
+
+        <MemphisCard variant="blue" class="info-card-memphis text-center">
+          <div class="info-icon-memphis info-icon-blue">
+            <i class="bx bx-gift text-2xl"></i>
+          </div>
+          <h3 class="info-title-memphis">Incluye</h3>
+          <p class="info-desc-memphis">Scooter, casco, guía experto y agua refrescante</p>
+        </MemphisCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 relative overflow-hidden bg-cream">
+    <div class="cta-deco-memphis cta-deco-1"></div>
+    <div class="cta-deco-memphis cta-deco-2"></div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h2 class="section-title">¿LISTO PARA EXPLORAR?</h2>
+      <p class="section-subtitle mt-4">Vive la experiencia única del Malecón</p>
+      <div class="mt-10">
+        <MemphisButton href="/contacto" variant="primary" size="lg">RESERVAR AHORA</MemphisButton>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-memphis {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-cream);
+    overflow: hidden;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .hero-memphis {
+      background-color: var(--color-cream);
+    }
+  }
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #FF6B9D 3px, transparent 3px);
+  background-size: 24px 24px;
+  opacity: 0.3;
+}
+
+.hero-deco {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+}
+
+.hero-deco-1 {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 9999px;
+  background-color: #39FF14;
+  top: 10%;
+  right: 15%;
+  opacity: 0.2;
+}
+
+.hero-deco-2 {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 9999px;
+  background-color: #FFE135;
+  bottom: 15%;
+  left: 10%;
+  opacity: 0.25;
+}
+
+.hero-title-memphis {
+    @apply font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4;
+    color: var(--color-text);
+  }
+
+  .hero-desc-memphis {
+    @apply font-body text-lg;
+    color: var(--color-gray-600);
+  }
+
+.route-card-memphis {
+  @apply overflow-hidden;
+}
+
+.route-grid-memphis {
+  @apply grid grid-cols-1 lg:grid-cols-2;
+}
+
+.route-image-memphis {
+  @apply relative min-h-[300px];
+}
+
+.route-image-memphis img {
+  @apply w-full h-full object-cover;
+}
+
+.route-badge-memphis {
+  @apply absolute bottom-4 left-4 font-subheading font-bold text-xs px-4 py-2 rounded-full;
+}
+
+.route-badge-blue {
+  @apply bg-blue text-white;
+}
+
+.route-badge-yellow {
+    @apply bg-yellow;
+    color: var(--color-text);
+  }
+
+  .route-badge-coral {
+    @apply bg-coral text-white;
+  }
+
+  .route-content-memphis {
+    @apply p-6 flex flex-col;
+  }
+
+  .route-title-memphis {
+    @apply font-heading text-xl font-bold mb-2;
+    color: var(--color-text);
+  }
+
+  .route-desc-memphis {
+    @apply font-body mb-4;
+    color: var(--color-gray-600);
+  }
+
+.route-stops-memphis {
+  @apply flex-1 space-y-3 mb-6;
+}
+
+.stop-item-memphis {
+  @apply flex gap-4 p-3 bg-cream rounded-lg border-2 border-dashed border-gray-200;
+}
+
+.stop-icon-blue {
+  @apply w-10 h-10 flex items-center justify-center text-blue text-xl;
+}
+
+.stop-icon-yellow {
+  @apply w-10 h-10 flex items-center justify-center text-yellow text-xl;
+}
+
+.stop-icon-coral {
+  @apply w-10 h-10 flex items-center justify-center text-coral text-xl;
+}
+
+.stop-item-memphis h4 {
+    @apply font-subheading font-bold text-sm mb-1;
+    color: var(--color-text);
+  }
+
+  .stop-item-memphis p {
+    @apply font-body text-xs;
+    color: var(--color-gray-500);
+  }
+
+.route-footer-memphis {
+    @apply flex justify-between items-center pt-4 border-t-2 border-dashed border-gray-200;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .route-footer-memphis {
+      @apply border-gray-600;
+    }
+  }
+
+.route-price-memphis {
+  @apply flex items-baseline;
+}
+
+.info-grid-memphis {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+}
+
+.info-card-memphis {
+  @apply p-6;
+}
+
+.info-icon-memphis {
+  @apply w-16 h-16 mx-auto mb-4 flex items-center justify-center border-4 border-solid rounded-full;
+}
+
+.info-icon-lime {
+  @apply border-lime text-lime;
+}
+
+.info-icon-pink {
+  @apply border-pink text-pink;
+}
+
+.info-icon-blue {
+  @apply border-blue text-blue;
+}
+
+.info-title-memphis {
+    @apply font-heading text-lg font-bold mb-2;
+    color: var(--color-text);
+  }
+
+  .info-desc-memphis {
+    @apply font-body text-sm;
+    color: var(--color-gray-600);
+  }
+
+.cta-deco-memphis {
+  @apply absolute pointer-events-none rounded-full;
+}
+
+.cta-deco-1 {
+  @apply w-40 h-40 rounded-full bg-lime;
+  top: -20px;
+  left: 10%;
+  opacity: 0.15;
+}
+
+.cta-deco-2 {
+  @apply w-24 h-24 rounded-full bg-yellow;
+  bottom: 20%;
+  right: 15%;
+  opacity: 0.1;
+}
+</style>
