@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create Lightbox Elements
     const lightbox = document.createElement('div');
     lightbox.id = 'gallery-lightbox';
-    lightbox.className = 'fixed inset-0 z-50 hidden flex items-center justify-center bg-dark/90 backdrop-blur-xl opacity-0 transition-opacity duration-300';
+    lightbox.className = 'fixed inset-0 z-50 hidden flex items-center justify-center bg-[#1A1A2E]/90 backdrop-blur-xl opacity-0 transition-opacity duration-300';
 
     const lightboxContent = document.createElement('div');
     lightboxContent.className = 'relative max-w-7xl max-h-[90vh] p-2';
